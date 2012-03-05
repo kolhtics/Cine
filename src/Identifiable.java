@@ -1,0 +1,5 @@
+
+interface Identifiable 
+{
+	String getId();
+}
