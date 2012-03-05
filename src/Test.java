@@ -29,8 +29,8 @@ public class Test
 		}
 		*/
 		
-		LecteurBD.lireDonnees( new String("D:/Programation/Java/Cinema/src/data/actors.short"), lesActeurs, lesFilms );
-		LecteurBD.lireDonnees( new String("D:/Programation/Java/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actors.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actresses.short"), lesActeurs, lesFilms );
 		
 		// Tentative de recherche. Elle échoue car la recherche d'un auteur par
 		// son nom requiert d'avoir une chaine de caractères rigoureusement
