@@ -62,8 +62,6 @@ public class Repertoire <Item extends Identifiable>
 		return lesObjects.values().iterator();
 	}
 
-
-
 	private Map<String, Item> lesObjects;
 }
 

@@ -51,6 +51,20 @@ public class Acteur implements Identifiable
 	{
 		lesFilms.add(f);
 	}
+	
+	/**
+	 * Determine si un acteur a jou� dans un film donn�
+	 */
+	public boolean joueDans(Film f){
+		Iterator<Film> it=iterator();
+		while (it.hasNext()){
+			Film f2=it.next();
+			if (f.equals(f2)){
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * Étant donné un deuxième acteur, détermine s'ils ont un film en commun.
@@ -59,7 +73,16 @@ public class Acteur implements Identifiable
 	 */
 	public Film filmEnCommun( Acteur autre )
 	{
-		/* À compléter */
+		Iterator<Film> it= iterator();
+		while (it.hasNext()){
+			Film f1= it.next();
+			Iterator<Film> it2=iterator();
+			while (it2.hasNext()){
+				if (f1.equals(it2.next())){
+					return f1;
+				}
+			}
+		}
 		return null;
 	}
 

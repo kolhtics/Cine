@@ -54,7 +54,16 @@ class Film implements Identifiable
 	 */
 	public Acteur acteurEnCommun ( Film autre )
 	{
-		// À compléter...
+		Iterator<Acteur> it = iterator();
+		while (it.hasNext()){
+			Acteur a1=it.next();
+			Iterator<Acteur> it2 = iterator();
+			while (it2.hasNext()){
+				if (a1.equals(it2.next())){
+					return a1;
+				}
+			}
+		}
 		return null;
 	}
 

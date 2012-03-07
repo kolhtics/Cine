@@ -79,7 +79,11 @@ public class LecteurBD
 				{
 					fin = s.indexOf( "}", debut );
 					String titre = s.substring( debut+1, fin );
-					Film F = new Film( titre );
+					Film F = lesFilms.rechercher( titre );
+					if (F == null )
+					{
+						F = new Film( titre );
+					}
 					lesFilms.ajouter( F );
 					A.ajouterFilm( F );
 					F.ajouterActeur( A );
