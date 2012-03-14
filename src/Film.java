@@ -10,7 +10,7 @@ import java.util.Iterator;
  * figurent dans ce film.
  */
 
-class Film implements Identifiable 
+public class Film implements Identifiable , Comparable<Film>
 {
 
 	/**
@@ -76,7 +76,6 @@ class Film implements Identifiable
 		return lesActeurs.iterator();
 	}
 
-
 	/**
 	 * Conversion en string. Est entre autre appellée lors par la fonction
 	 * 'System.out.println'
@@ -93,8 +92,15 @@ class Film implements Identifiable
 		return s;
 	}
 	
+	@Override
+	public int compareTo(Film o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 	private String titre;
 	private ArrayList<Acteur> lesActeurs;
+
 }
 
 
