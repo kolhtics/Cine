@@ -11,7 +11,7 @@ import java.util.Iterator;
  * lesquels l'acteur a joué.
  */
 
-public class Acteur implements Identifiable 
+public class Acteur implements Identifiable, Comparable<Acteur>
 {
 
 	/**
@@ -31,6 +31,9 @@ public class Acteur implements Identifiable
 		return nom;
 	}
 
+	public ArrayList<Film> getFilms(){
+		return lesFilms;
+	}
 	/**
 	 * Le nom est utilisé comme identificateur. Il est à noter que la base de
 	 * données d'IMDB est conçue de manière à ce que deux acteurs de même nom
@@ -110,10 +113,17 @@ public class Acteur implements Identifiable
 		return s;
 	}
 	
+	@Override
+	public int compareTo(Acteur o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
+	
 
 	private String nom;
 	private ArrayList<Film> lesFilms;
+
 }
 
 
