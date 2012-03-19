@@ -118,8 +118,8 @@ public class Test {
 		}
 		*/
 		
-		LecteurBD.lireDonnees( new String("E:/SOURCE JAVA/actors.short"), lesActeurs, lesFilms );
-		LecteurBD.lireDonnees( new String("E:/SOURCE JAVA/actresses.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actors.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actors.short"), lesActeurs, lesFilms );
 
 		// exemple recherche 
 		
