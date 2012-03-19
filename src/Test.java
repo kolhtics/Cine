@@ -1,17 +1,21 @@
 
+import in.keyboard.Keyboard;
+
 import java.util.*;
 
+// PENSER A ECRIRE LES METHODES COMPARE TO DES CLASSES ACTEUR ET FILM
 
-/**
- * Exemples de programme qui construit une base de donnÃ©es d'acteurs et de
- * films Ã  partir de fichiers de donnÃ©es.
- *
- * @author Xavier ProvenÃ§al
- */
-
-public class Test
-{
-	public void plusCourteChaine(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms,Acteur acteurDepart,Acteur cible){
+public class Test {
+	
+	public static void menuConsole(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms){
+		System.out.println("Acteur 1");
+		Acteur a1=new Acteur(Keyboard.getString());					// PENSER A RECHERCHER SI L'ACTEUR EXISTE 
+		System.out.println("Acteur 2");
+		Acteur a2=new Acteur(Keyboard.getString());
+		plusCourteChaine(lesActeurs,lesFilms,a1,a2);
+		
+	}
+	public static void plusCourteChaine(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms,Acteur acteurDepart,Acteur cible){
 		
 		Set<Film> objectif=new TreeSet<Film>();
 		Set<Film> filmVus=new TreeSet<Film>();
@@ -32,9 +36,8 @@ public class Test
 		
 		Film f=fileAttente.poll();
 		while (!trouve && f != null ){
-			
 			if (filmVus.contains(f)){
-				trouve=true;
+				trouve=true;															// TROUVE NEST JAMAIS MIS A TRUE 
 			}
 			else {
 				voisin_en_attente(f, fileAttente, antecedents, filmVus, acteurVus);
@@ -46,7 +49,7 @@ public class Test
 			afficher_chaine(acteurDepart,solution,cible);
 		}
 		else{
-			System.out.println("Aucune chaîne n'est possible");
+			System.out.println("Aucune chaîne n'est possible");						// SAFFICHE QUELQUE SOIT LES ACTEURS CHERCHES
 		}
 	}
 
@@ -61,25 +64,42 @@ public class Test
 					Film f2=it_films.next();
 					if (!filmVus.contains(f2)){
 						filmVus.add(f2);
-						fileAttente.add(f2);
-						antecedents.put(f2,f);   // JE SUIS PAS SUR !! LOL
+						fileAttente.offer(f2);
+						antecedents.put(f2,f);					// pas sûr de cette ligne
 					}
 				}
 			}
 		}
 	}
 	
-	public Queue<Acteur> construire_chaine(Map<Film,Film> antecedents,Film dernier){
-		Queue<Acteur> fileAttente=new LinkedList<Acteur>();
+	public static Queue<Acteur> construire_chaine(Map<Film,Film> antecedents,Film dernier){
+		Queue<Acteur> solution_inverse=new LinkedList<Acteur>();
 		Film f=dernier;
 		while (antecedents.containsKey(f)){
-			// TODO auto-generated sub string
+			Film f2=antecedents.get(f);
+			Acteur a=f.acteurEnCommun(f2);
+			solution_inverse.offer(a);
+			f=f2;
 		}
-		return null;
+		Acteur[] tableau_solution=(Acteur[]) solution_inverse.toArray();
+		Queue<Acteur> solution=new LinkedList<Acteur>();
+		for (int i= tableau_solution.length -1; i>=0;i--){				// EXISTE T'IL UNE SOLUTION PLUS PROPRE
+			solution.add(tableau_solution[i]);
+		}
+		return solution;
 	}
 	
-	public void afficher_chaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
-		
+	public static void afficher_chaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
+		System.out.println(acteurDepart.getNom());
+		Acteur a1=acteurDepart;
+		Acteur a2=solution.poll();
+		while (a2!= null ){
+			Film f=a1.filmEnCommun(a2);
+			System.out.println(f.getTitre());
+			System.out.println(a2.getNom());
+			a1=a2;
+			a2=solution.poll();
+		}
 	}
 	
 	public static void main( String[] args )
@@ -98,8 +118,8 @@ public class Test
 		}
 		*/
 		
-		LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actors.short"), lesActeurs, lesFilms );
-		LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actresses.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("E:/SOURCE JAVA/actors.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("E:/SOURCE JAVA/actresses.short"), lesActeurs, lesFilms );
 
 		// exemple recherche 
 		
@@ -134,6 +154,8 @@ public class Test
 		Film film3= lesFilms.rechercher("A River Runs Through It (1992)");
 		Acteur acteurlol = film1.acteurEnCommun(film3);
 		System.out.println(acteurlol);
+		
+		menuConsole(lesActeurs,lesFilms);
 	}
 	
 }
