@@ -60,14 +60,9 @@ public class LecteurBD
 
 		System.out.println("# Lecture du fichier de données : " + fichier );
 		int nb_lignes_total = getNombreDeLignes( fichier );
-		BarreProgression bp = new BarreProgression( nb_lignes_total, 50 );
-
-		bp.start();
-
 		while ( ! lll.lectureTermine() )
 		{
 			String s = lll.ligneSuivante();
-			bp.progresse();
 			if ( s.length() > 0 )
 			{
 				int debut = s.indexOf( "{" );
@@ -90,11 +85,6 @@ public class LecteurBD
 				}
 			}
 		}
-		try
-		{
-			bp.join();
-		}
-		catch (InterruptedException e) {}
 		System.out.println( "Lecture terminée" );
 	}
 
