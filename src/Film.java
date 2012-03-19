@@ -94,8 +94,7 @@ public class Film implements Identifiable , Comparable<Film>
 	
 	@Override
 	public int compareTo(Film o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return getId().compareTo(o.getId());
 	}
 	
 	private String titre;

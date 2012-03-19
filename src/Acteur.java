@@ -115,8 +115,7 @@ public class Acteur implements Identifiable, Comparable<Acteur>
 	
 	@Override
 	public int compareTo(Acteur o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return nom.compareTo(o.getNom());
 	}
 
 	

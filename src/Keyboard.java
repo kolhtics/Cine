@@ -14,13 +14,13 @@ import java.io.*;
 	public static String getString() {
 		return getLine();
 		}
-	
+		
 	public static int getInt() {
 		try{
 			return Integer.parseInt(getLine());
 		}catch(NumberFormatException e){ return -1;}
 		}
-
+	
 	public static void pause()
 		{
 		try{
@@ -36,4 +36,4 @@ import java.io.*;
 		}catch(IOException e){ return "";}
 		return line;
 		}
-	}
+}
