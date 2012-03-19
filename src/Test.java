@@ -1,6 +1,4 @@
 
-import in.keyboard.Keyboard;
-
 import java.util.*;
 
 // PENSER A ECRIRE LES METHODES COMPARE TO DES CLASSES ACTEUR ET FILM
@@ -9,9 +7,11 @@ public class Test {
 	
 	public static void menuConsole(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms){
 		System.out.println("Acteur 1");
-		Acteur a1=new Acteur(Keyboard.getString());					// PENSER A RECHERCHER SI L'ACTEUR EXISTE 
+		Acteur a1= lesActeurs.rechercher(Keyboard.getString());		// PENSER A RECHERCHER SI L'ACTEUR EXISTE 
+		System.out.println(a1);
 		System.out.println("Acteur 2");
-		Acteur a2=new Acteur(Keyboard.getString());
+		Acteur a2= lesActeurs.rechercher(Keyboard.getString());
+		System.out.println(a2);
 		plusCourteChaine(lesActeurs,lesFilms,a1,a2);
 		
 	}
@@ -30,16 +30,19 @@ public class Test {
 			objectif.add(it_cible.next());
 		}
 		while (it_depart.hasNext()){
-			fileAttente.add(it_depart.next());
-			filmVus.add(it_depart.next());
+			Film film_courant = it_depart.next();
+			fileAttente.add(film_courant);
+			filmVus.add(film_courant);
 		}
 		
 		Film f=fileAttente.poll();
 		while (!trouve && f != null ){
-			if (filmVus.contains(f)){
-				trouve=true;															// TROUVE NEST JAMAIS MIS A TRUE 
+			if (objectif.contains(f)){
+				System.out.println("JAI TROUVE F");
+				trouve=true;
 			}
 			else {
+				System.out.println("je met les voisins en attente ?");
 				voisin_en_attente(f, fileAttente, antecedents, filmVus, acteurVus);
 			}
 			f=fileAttente.poll();
@@ -49,7 +52,7 @@ public class Test {
 			afficher_chaine(acteurDepart,solution,cible);
 		}
 		else{
-			System.out.println("Aucune cha�ne n'est possible");						// SAFFICHE QUELQUE SOIT LES ACTEURS CHERCHES
+			System.out.println("Aucune cha�ne n'est possible");
 		}
 	}
 
@@ -57,9 +60,10 @@ public class Test {
 		Iterator<Acteur> it_acteurs = f.iterator();
 
 		while (it_acteurs.hasNext()){
-			if (!acteurVus.contains(it_acteurs.next())){
-				acteurVus.add(it_acteurs.next());
-				Iterator<Film> it_films = it_acteurs.next().iterator();
+			Acteur A = it_acteurs.next();
+			if (!acteurVus.contains(A)){
+				acteurVus.add(A);
+				Iterator<Film> it_films = A.iterator();
 				while (it_films.hasNext()){
 					Film f2=it_films.next();
 					if (!filmVus.contains(f2)){
@@ -81,12 +85,7 @@ public class Test {
 			solution_inverse.offer(a);
 			f=f2;
 		}
-		Acteur[] tableau_solution=(Acteur[]) solution_inverse.toArray();
-		Queue<Acteur> solution=new LinkedList<Acteur>();
-		for (int i= tableau_solution.length -1; i>=0;i--){				// EXISTE T'IL UNE SOLUTION PLUS PROPRE
-			solution.add(tableau_solution[i]);
-		}
-		return solution;
+		return solution_inverse;						// PENSER A INVERSER LA SOLUTION
 	}
 	
 	public static void afficher_chaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
@@ -107,53 +106,11 @@ public class Test {
 		// Initialisation des répertoires
 		Repertoire<Acteur> lesActeurs = new Repertoire<Acteur>();
 		Repertoire<Film> lesFilms = new Repertoire<Film>();
-
-		// Lecture des fichiers de données
-		// On pout lire ainsi un nombre arbitraire de fichiers de données.
 		
-		/*
-		for (String fichier : args ) 
-		{
-			LecteurBD.lireDonnees( fichier, lesActeurs, lesFilms );
-		}
-		*/
+		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actors.short"), lesActeurs, lesFilms );
+		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actresses.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/bidon.short"), lesActeurs, lesFilms );
 		
-		LecteurBD.lireDonnees( new String("E:/SOURCE JAVA/actors.short"), lesActeurs, lesFilms );
-		LecteurBD.lireDonnees( new String("E:/SOURCE JAVA/actresses.short"), lesActeurs, lesFilms );
-
-		// exemple recherche 
-		
-		/* s = new String("Ventura, Lino");
-		A = lesActeurs.rechercher ( s );
-		if ( A != null )
-		{
-			System.out.println( "On a trouvé : " + A.getNom() );
-			System.out.println( "Voici sa liste de films : ");
-			Iterator<Film> it = A.iterator();
-			int i = 1;
-
-			while ( it.hasNext() )
-			{
-				Film f = it.next();
-				System.out.println( " " + i + ". " + f.getTitre() );
-				++i;
-			}
-
-			// On peut aussi, appeler directement 'println' sur l'objet Acteur.
-			System.out.println( A );
-		}*/
-		
-		Acteur lol= lesActeurs.rechercher("Clooney, George");
-		Acteur lol2= lesActeurs.rechercher("Pitt, Brad");
-		Film film=lol.filmEnCommun(lol2);
-		Film film2=lol2.filmEnCommun(lol);
-		System.out.println(film);
-		System.out.println(film2);
-		
-		Film film1= lesFilms.rechercher("And They Are Off (1982)");
-		Film film3= lesFilms.rechercher("A River Runs Through It (1992)");
-		Acteur acteurlol = film1.acteurEnCommun(film3);
-		System.out.println(acteurlol);
 		
 		menuConsole(lesActeurs,lesFilms);
 	}
