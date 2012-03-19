@@ -14,7 +14,7 @@ import java.io.*;
 	public static String getString() {
 		return getLine();
 		}
-
+	
 	public static int getInt() {
 		try{
 			return Integer.parseInt(getLine());
@@ -36,4 +36,4 @@ import java.io.*;
 		}catch(IOException e){ return "";}
 		return line;
 		}
-}
+	}
