@@ -1,7 +1,10 @@
+package CinemaPackage;
+
 
 
 import java.awt.*;
 import java.awt.event.*;
+
 
 
 public class JouerEcouteur implements ActionListener {

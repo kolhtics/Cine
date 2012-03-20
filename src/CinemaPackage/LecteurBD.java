@@ -1,7 +1,10 @@
+package CinemaPackage;
+
 import java.lang.Process;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+
 
 /**
  * Classe pour construire les répertoires d'acteurs et de films à partir de

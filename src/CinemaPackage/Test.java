@@ -1,3 +1,5 @@
+package CinemaPackage;
+
 
 import java.util.*;
 
