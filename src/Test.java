@@ -3,6 +3,14 @@ import java.util.*;
 
 public class Test {
 	
+	
+	//Methode de test graphique qui marche
+	public static void testGraphique(String act1, String act2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
+		Acteur a1= lesActeurs.rechercher(act1);
+		Acteur a2= lesActeurs.rechercher(act2);
+		plusCourteChaine(lesActeurs,lesFilms,a1,a2); //qui affiche encore le resultat en console
+	}
+	
 	public static void menuConsole(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms){
 		System.out.println("Acteur 1");
 		Acteur a1= lesActeurs.rechercher(Keyboard.getString());
@@ -101,12 +109,13 @@ public class Test {
 		Repertoire<Acteur> lesActeurs = new Repertoire<Acteur>();
 		Repertoire<Film> lesFilms = new Repertoire<Film>();
 		
-		LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actors.short"), lesActeurs, lesFilms );
-		LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actresses.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/bidon.short"), lesActeurs, lesFilms );
+		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actors.short"), lesActeurs, lesFilms );
+		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actresses.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("D://Programmation/Java/Cine/src/data/bidon.short"), lesActeurs, lesFilms );
 		
 		
-		menuConsole(lesActeurs,lesFilms);
+		//menuConsole(lesActeurs,lesFilms);
+		new CineFrame(lesActeurs, lesFilms);
 	}
 	
 }
