@@ -96,13 +96,18 @@ public class Test {
 		System.out.println(acteurDepart.getNom());
 		Acteur a1=acteurDepart;
 		Acteur a2=solution.poll();
+		Acteur dernierAct=a2;
 		while (a2!= null ){
 			Film f=a1.filmEnCommun(a2);
 			System.out.println(f.getTitre());
 			System.out.println(a2.getNom());
 			a1=a2;
 			a2=solution.poll();
+			if (a2!=null){dernierAct = a2; }
 		}
+		Film f=dernierAct.filmEnCommun(cible);
+		System.out.println(f.getTitre());
+		System.out.println(cible.getNom());
 	}
 	
 	public static void main( String[] args )
@@ -113,11 +118,18 @@ public class Test {
 		
 		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actors.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actresses.short"), lesActeurs, lesFilms );
+		
+		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actors.short"), lesActeurs, lesFilms );
+		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
+		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/bidon.short"), lesActeurs, lesFilms );
+		
 		LecteurBD.lireDonnees( new String("D://Programmation/Java/Cine/src/data/bidon.short"), lesActeurs, lesFilms );
 		
 		
 		//menuConsole(lesActeurs,lesFilms);
-		new CineFrame(lesActeurs, lesFilms);
+		new CineFrame1();
+		new CineFrame2(lesActeurs,lesFilms);
+		new CineFrame3();
 	}
 	
 }
