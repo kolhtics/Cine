@@ -14,7 +14,7 @@ public class CineFrame2 extends Frame {
 	private Repertoire<Film> lesFilms;
 
 	public CineFrame2(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
-		setTitle("Cinema");
+		setTitle("Cinema -> Frame 2");
 		setSize(LARGEUR, HAUTEUR);
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.LIGHT_GRAY);

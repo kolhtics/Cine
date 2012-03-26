@@ -1,6 +1,10 @@
 package CinemaPackage;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 /* changer la disposition des boutons */
 public class CineFrame1 extends Frame{
@@ -11,7 +15,6 @@ public class CineFrame1 extends Frame{
 		this.setTitle("Cinema -> Menu");
 		this.setSize(LARGEUR, HAUTEUR);
 		this.setLayout(new BorderLayout());
-		this.setBackground(Color.LIGHT_GRAY);
 		
 		Panel panelPrincipal = new Panel(new GridLayout(1,2));
 		
@@ -35,4 +38,5 @@ public class CineFrame1 extends Frame{
 		
 		
 	}
+	
 }

@@ -9,7 +9,7 @@ public class CineFrame3 extends Frame{
 	private Repertoire<Film> lesFilms;
 
 		public CineFrame3(){
-			this.setTitle("Cinema");
+			this.setTitle("Cinema - Frame 3");
 			this.setSize(LARGEUR, HAUTEUR);
 			this.setLayout(new BorderLayout());
 			this.setBackground(Color.LIGHT_GRAY);
@@ -32,7 +32,9 @@ public class CineFrame3 extends Frame{
 			panel1.add(boutonJouer);
 			panel1.add(boutonBack);
 			
-			Panel panel2 =new Panel(new GridLayout(2,1));
+			Panel panel2 =new Panel(new GridLayout(2,2));
+			
+			Label LabelListe =new Label("Liste des elements");
 			
 			Panel panelList = new Panel();
 			List listElement = new List(10);
@@ -46,14 +48,13 @@ public class CineFrame3 extends Frame{
 			panelList.add(listElement);
 			
 			
-			Panel panelAffichage = new Panel(new GridLayout(2,1));
-			Label LabelVictoire =new Label("");
+			Label LabelVictoire =new Label("lol");
 			Button bloque= new Button("Je suis bloque");
-			panelAffichage.add(LabelVictoire);
-			panelAffichage.add(bloque);
 			
+			panel2.add(LabelListe);
+			panel2.add(LabelVictoire);
 			panel2.add(panelList);
-			panel2.add(panelAffichage);
+			panel2.add(bloque);
 			
 			
 			this.add(panel1, BorderLayout.NORTH);

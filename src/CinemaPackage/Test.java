@@ -128,7 +128,7 @@ public class Test {
 		
 		//menuConsole(lesActeurs,lesFilms);
 		new CineFrame1();
-		new CineFrame2(lesActeurs,lesFilms);
+		//new CineFrame2(lesActeurs,lesFilms);
 		new CineFrame3();
 	}
 	

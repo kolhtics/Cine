@@ -16,7 +16,7 @@ public class ImagePanel extends Panel{
 		try {
             Image img = ImageIO.read(new File("Cinema.jpg"));
             g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-		} catch (IOException e) {
+			} catch (IOException e) {
             
 		}
 
