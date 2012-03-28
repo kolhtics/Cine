@@ -123,13 +123,12 @@ public class Test {
 		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/bidon.short"), lesActeurs, lesFilms );
 		
-		LecteurBD.lireDonnees( new String("D://Programmation/Java/Cine/src/data/bidon.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/bidon.short"), lesActeurs, lesFilms );
 		
 		
 		//menuConsole(lesActeurs,lesFilms);
-		new CineFrame1();
-		//new CineFrame2(lesActeurs,lesFilms);
-		new CineFrame3();
+		new CineFrame1(lesActeurs, lesFilms);
+
 	}
 	
 }
