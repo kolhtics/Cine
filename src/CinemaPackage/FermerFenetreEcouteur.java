@@ -12,6 +12,7 @@ public class FermerFenetreEcouteur extends WindowAdapter {
 		this.f=f;
 	}
 	
+
 	public void windowClosing(WindowEvent e){
 		f.dispose();
 	}
