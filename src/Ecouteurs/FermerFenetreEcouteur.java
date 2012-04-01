@@ -1,4 +1,4 @@
-package CinemaPackage;
+package Ecouteurs;
 
 
 import java.awt.*;

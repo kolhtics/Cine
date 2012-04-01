@@ -1,7 +1,12 @@
-package CinemaPackage;
+package Interface;
 
 import java.awt.*;
 import java.awt.event.*;
+
+import CinemaPackage.*;
+import Interface.*;
+import Algorithme.*;
+import Ecouteurs.*;
 
 
 public class BoiteDialog extends Dialog implements ActionListener, WindowListener{

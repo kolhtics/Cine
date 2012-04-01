@@ -1,27 +1,27 @@
-package CinemaPackage;
+package Algorithme;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.TreeSet;
 
-import java.util.*;
+import CinemaPackage.*;
 
-public class Test {
+public class AlgoBot {
 	
-	
-	//Methode de test graphique qui marche
-	public static void testGraphique(String act1, String act2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
+	//Probleme quand l'acteur de depart et l'acteur cible on leur premier film en commun
+	//Meme probleme dans AlgoConsole
+	public static String testGraphique(String act1, String act2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		Acteur a1= lesActeurs.rechercher(act1);
 		Acteur a2= lesActeurs.rechercher(act2);
-		plusCourteChaine(lesActeurs,lesFilms,a1,a2); //qui affiche encore le resultat en console
+		return plusCourteChaine(lesActeurs,lesFilms,a1,a2);
 	}
 	
-	public static void menuConsole(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms){
-		System.out.println("Acteur 1");
-		Acteur a1= lesActeurs.rechercher(Keyboard.getString());
-		System.out.println("Acteur 2");
-		Acteur a2= lesActeurs.rechercher(Keyboard.getString());
-		plusCourteChaine(lesActeurs,lesFilms,a1,a2);
-	}
 	
-	public static void plusCourteChaine(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms,Acteur acteurDepart,Acteur cible){
+	public static String plusCourteChaine(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms,Acteur acteurDepart,Acteur cible){
 		
 		Set<Film> objectif=new TreeSet<Film>();
 		Set<Film> filmVus=new TreeSet<Film>();
@@ -53,10 +53,10 @@ public class Test {
 		}
 		if (trouve){
 			Queue<Acteur> solution=construire_chaine(antecedents,f);
-			afficher_chaine(acteurDepart,solution,cible);
+			return getChaine(acteurDepart,solution,cible);
 		}
 		else{
-			System.out.println("Aucune cha�ne n'est possible");
+			return "Aucune chaine n'est possible";
 		}
 	}
 
@@ -91,46 +91,24 @@ public class Test {
 		}
 		return solution_inverse;						// PENSER A INVERSER LA SOLUTION
 	}
-	
-	public static void afficher_chaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
-		System.out.println(acteurDepart.getNom());
+
+	public static String getChaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
+		String s =  "L'acteur de depart : "+acteurDepart.getNom()+"\nà joué dans : ";
 		Acteur a1=acteurDepart;
 		Acteur a2=solution.poll();
 		Acteur dernierAct=a2;
 		while (a2!= null ){
 			Film f=a1.filmEnCommun(a2);
-			System.out.println(f.getTitre());
-			System.out.println(a2.getNom());
+			s += f.getTitre()+"\navec : ";
+			s += a2.getNom()+"\nqui à joué dans : ";
 			a1=a2;
 			a2=solution.poll();
 			if (a2!=null){dernierAct = a2; }
 		}
 		Film f=dernierAct.filmEnCommun(cible);
-		System.out.println(f.getTitre());
-		System.out.println(cible.getNom());
+		s += f.getTitre()+"\navec l'acteur cible : ";
+		s += cible.getNom();
+		return s;
 	}
-	
-	public static void main( String[] args )
-	{
-		// Initialisation des répertoires
-		Repertoire<Acteur> lesActeurs = new Repertoire<Acteur>();
-		Repertoire<Film> lesFilms = new Repertoire<Film>();
-		
-		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actors.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actresses.short"), lesActeurs, lesFilms );
-		
-		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actors.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/bidon.short"), lesActeurs, lesFilms );
-		
-		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/bidon.short"), lesActeurs, lesFilms );
-		
-		
-		//menuConsole(lesActeurs,lesFilms);
-		new CineFrame1(lesActeurs, lesFilms);
 
-	}
-	
 }
-
-

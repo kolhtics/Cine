@@ -1,8 +1,13 @@
-package CinemaPackage;
+package Interface;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+
+import CinemaPackage.*;
+import Interface.*;
+import Algorithme.*;
+import Ecouteurs.*;
 
 import javax.imageio.ImageIO;
 
@@ -19,6 +24,10 @@ public class ImagePanel extends Panel{
             
 		}
 
+	}
+	
+	public void maj(){
+		this.repaint();
 	}
 
 }

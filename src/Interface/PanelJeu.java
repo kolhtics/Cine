@@ -1,23 +1,21 @@
-package CinemaPackage;
+package Interface;
 
 import java.awt.*;
 
-public class CineFrame3 extends Frame{
-	final static int TAILLE_LISTE = 20;
+import CinemaPackage.*;
+import Interface.*;
+import Algorithme.*;
+import Ecouteurs.*;
+
+public class PanelJeu extends Panel{
+	final static int TAILLE_LISTE = 15;
 	private Repertoire<Acteur> lesActeurs;
 	private Repertoire<Film> lesFilms;
 
-		public CineFrame3(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
-			this.setTitle("Cinema -> Frame 3");
-			this.setSize(CineFrame1.LARGEUR, CineFrame1.HAUTEUR);
+		public PanelJeu(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 			this.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 10));
 			//this.setLayout(new GridLayout(4,1));
 			this.setBackground(Color.LIGHT_GRAY);
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			this.setLocation(
-			        (screenSize.width-this.getWidth())/2,
-			        (screenSize.height-this.getHeight())/2
-			        );
 			
 			this.lesActeurs=lesActeurs;
 			this.lesFilms=lesFilms;
@@ -70,15 +68,13 @@ public class CineFrame3 extends Frame{
 			panelList.add(listResponce);
 			
 			
-			Panel panel3 = new Panel(new GridLayout(1,4, 5, 5));
+			Panel panel3 = new Panel(new GridLayout(1,3, 5, 5));
 			Button ok = new Button ("Ok");
 			Button boutonBack = new Button ("Back");
 			Button bloque= new Button("Je suis bloque");
-			Button menu= new Button("Menu");
 			panel3.add(ok);
 			panel3.add(boutonBack);
 			panel3.add(bloque);
-			panel3.add(menu);
 					
 			this.add(panel1);
 			this.add(panel2);
@@ -87,12 +83,14 @@ public class CineFrame3 extends Frame{
 
 
 			
-			this.addWindowListener(new FermerFenetreEcouteur(this));
-			menu.addActionListener(new BoutonEcouteur(this, lesActeurs, lesFilms));
 			boutonJouer.addActionListener(new BoutonEcouteur(TextActeur1, TextActeur2, lesActeurs, lesFilms));
 			
 			this.setVisible(true);
 			
 			
+		}
+		
+		public void maj(){
+			this.repaint();
 		}
 }
