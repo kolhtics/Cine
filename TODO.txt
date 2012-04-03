@@ -1,0 +1,30 @@
+ToDo:
+
+- Faire un completation auto des recherches
+
+- coder AlgoJeu qui permetra de jouer
+
+- MABITE possède une grosse distance de levenshtein :
+
+entier DistanceDeLevenshtein(caractere chaine1[1..longueurChaine1], caractere chaine2[1..longueurChaine2])
+   // d est un tableau de longueurChaine1+1 rangées et longueurChaine2+1 colonnes
+   declarer entier d[0..longueurChaine1, 0..longueurChaine2]
+   // i et j itèrent sur chaine1 et chaine2
+   declarer entier i, j, coût
+
+   pour i de 0 à longueurChaine1
+       d[i, 0] := i
+   pour j de 0 à longueurChaine2
+       d[0, j] := j
+
+   pour i de 1 à longueurChaine1
+       pour j de 1 à longueurChaine2
+           si chaine1[i] = chaine2[j] alors coût := 0
+                                sinon coût := 1
+           d[i, j] := minimum(
+                                d[i-1, j  ] + 1,     // effacement
+                                d[i,   j-1] + 1,     // insertion
+                                d[i-1, j-1] + coût   // substitution
+                             )
+							 
+retourner d[longueurChaine1, longueurChaine2]

@@ -65,10 +65,7 @@ public class PanelBot extends Panel{
 		System.out.println(s);
 		textRes.repaint();
 	}
-	
-	public void maj(){
-		this.repaint();
-	}
+
 	
 
 }

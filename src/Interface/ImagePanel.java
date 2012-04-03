@@ -25,9 +25,5 @@ public class ImagePanel extends Panel{
 		}
 
 	}
-	
-	public void maj(){
-		this.repaint();
-	}
 
 }

@@ -81,7 +81,7 @@ public class Acteur implements Identifiable, Comparable<Acteur>
 		Iterator<Film> it= iterator();
 		while (it.hasNext()){
 			Film f1= it.next();
-			Iterator<Film> it2=iterator();
+			Iterator<Film> it2= autre.iterator();
 			while (it2.hasNext()){
 				if (f1.equals(it2.next())){
 					return f1;

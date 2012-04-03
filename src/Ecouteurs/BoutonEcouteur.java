@@ -2,6 +2,7 @@ package Ecouteurs;
 
 import java.awt.Frame;
 import java.awt.Panel;
+import java.awt.TextArea;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class BoutonEcouteur implements ActionListener {
 	private Panel p;
 	private CineFrame f;
 	private PanelBot b;
+	private PanelJeu j;
 	
 	public BoutonEcouteur(Panel p, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		this.p=p;
@@ -35,6 +37,11 @@ public class BoutonEcouteur implements ActionListener {
 	public BoutonEcouteur(PanelBot b, TextField t1, TextField t2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		this(t1,t2,lesActeurs, lesFilms);
 		this.b=b;
+	}
+	
+	public BoutonEcouteur(PanelJeu j, TextField t1, TextField t2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
+		this(t1,t2,lesActeurs, lesFilms);
+		this.j=j;
 	}
 	
 	public BoutonEcouteur(CineFrame f){
@@ -62,9 +69,19 @@ public class BoutonEcouteur implements ActionListener {
 				new BoiteDialog(f ,"Veuillez remplir tous les champs !!");
 			}
 			else{
-				String s = AlgoBot.testGraphique(t1.getText(), t2.getText(), lesActeurs, lesFilms);
-				b.setTexte(s);
+				AlgoJeu.jouer(j,t1.getText(), t2.getText(), lesActeurs, lesFilms);
 			}
+		}
+		if(bouton.equals("Je suis bloque")){
+			if(t1.getText().equals("") | t2.getText().equals("")){
+				new BoiteDialog(f ,"Veuillez remplir tous les champs !!");
+			}
+			else{
+				SolutionFrame f= new SolutionFrame(AlgoBot.testGraphique(t1.getText(), t2.getText(), lesActeurs, lesFilms));
+			}
+		}
+		if(bouton.equals("Ok")){
+			AlgoJeu.suivant(j, j.getlistElement().getSelectedItem(), lesActeurs, lesFilms);
 		}
 		
 	}

@@ -1,6 +1,7 @@
 package Interface;
 
 import java.awt.*;
+import java.util.Iterator;
 
 import CinemaPackage.*;
 import Interface.*;
@@ -9,6 +10,8 @@ import Ecouteurs.*;
 
 public class PanelJeu extends Panel{
 	final static int TAILLE_LISTE = 15;
+	private List listElement, listReponse;
+	private Label LabelListe;
 	private Repertoire<Acteur> lesActeurs;
 	private Repertoire<Film> lesFilms;
 
@@ -23,51 +26,31 @@ public class PanelJeu extends Panel{
 
 			Panel panel1 = new Panel(new GridLayout(5,1, 200, 5));
 			Label LabelActeur1 = new Label("Acteur 1");
-			TextField TextActeur1 = new TextField(20);
+			TextField textActeur1 = new TextField("ok", 20);
 			Label LabelActeur2 = new Label("Acteur 2");
-			TextField TextActeur2 = new TextField(20);
+			TextField textActeur2 = new TextField("b", 20);
 			Button boutonJouer = new Button ("JOUER");
 
 			panel1.add(LabelActeur1);
-			panel1.add(TextActeur1);
+			panel1.add(textActeur1);
 			panel1.add(LabelActeur2);
-			panel1.add(TextActeur2);
+			panel1.add(textActeur2);
 			panel1.add(boutonJouer);
 			
 			Panel panel2 =new Panel(new GridLayout(1,2, 10, 5));
-			Label LabelListe =new Label("Liste de film de acteur", Label.CENTER);
+			LabelListe =new Label("", Label.CENTER);
 			Label LabelVictoire =new Label("nombres de coups : 2", Label.CENTER);
 			panel2.add(LabelListe);
 			panel2.add(LabelVictoire);
 			
 			
 			Panel panelList = new Panel(new GridLayout(1,2, 10, 5));
-			List listElement = new List(TAILLE_LISTE);
-			listElement.add("film1 blobd^sdfhbdjmqfsdfsqdfqsd");
-			listElement.add("film1");
-			listElement.add("fsqfsqdfsdqdfsqdfsqdilm1");
-			listElement.add("fifsqdflm1");
-			listElement.add("fsqdfsqdfilm1");
-			listElement.add("film1dsfsdfsqdfqsdfqsdf");
-			listElement.add("fidfsqdfsqddfsqdfsqdffilmsdqfqsdf1");
-			listElement.add("film1");
-			listElement.add("fsiqsdfqsdflm1");
-			listElement.add("fsdfsdfilm1");
-			listElement.add("fiffsqdfssdlmsd");
-			listElement.add("ffsdfsqdfsqdidflm1");
-			listElement.add("filsqdfsqm1");
-			listElement.add("film1");
-			listElement.add("fildfsm1");
-			listElement.add("filqdfsqdm1");
-			listElement.add("film1");
-			listElement.add("fifqsdfslm1");
-			listElement.add("fiqdfsqdfsdlm1");
+			listElement = new List(TAILLE_LISTE);
+			listReponse = new List(TAILLE_LISTE);
 			
-			List listResponce = new List(TAILLE_LISTE);
+			
 			panelList.add(listElement);
-			panelList.add(listResponce);
-			
-			
+			panelList.add(listReponse);
 			Panel panel3 = new Panel(new GridLayout(1,3, 5, 5));
 			Button ok = new Button ("Ok");
 			Button boutonBack = new Button ("Back");
@@ -83,14 +66,42 @@ public class PanelJeu extends Panel{
 
 
 			
-			boutonJouer.addActionListener(new BoutonEcouteur(TextActeur1, TextActeur2, lesActeurs, lesFilms));
-			
+			boutonJouer.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
+			bloque.addActionListener(new BoutonEcouteur(textActeur1, textActeur2, lesActeurs, lesFilms));
+			ok.addActionListener(new BoutonEcouteur(this,textActeur1, textActeur2, lesActeurs, lesFilms));
 			this.setVisible(true);
 			
 			
 		}
-		
-		public void maj(){
-			this.repaint();
+
+		public void setListElement(Acteur acteur) {
+			listElement.removeAll();
+			Iterator<Film> it=acteur.iterator();
+			while (it.hasNext()){
+				listElement.add(it.next().getId());
+			}
 		}
+		
+		public void setListElement (Film f){
+			listElement.removeAll();
+			Iterator<Acteur> it=f.iterator();
+			while (it.hasNext()){
+				listElement.add(it.next().getId());
+			}
+		}
+
+		public void setListReponse(String s) {
+			this.listReponse.add(s);
+		}
+
+		public void setLabelListe(String s) {
+			LabelListe.setText(s);
+			LabelListe.repaint();
+		}
+
+		public List getlistElement() {
+			return listElement;
+		}
+		
+		
 }

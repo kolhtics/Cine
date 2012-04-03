@@ -20,17 +20,18 @@ public class Test {
 		
 		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actors.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/bidon.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("H:/workspace/cinema/src/data/bidon.short"), lesActeurs, lesFilms );
 		
 		//LecteurBD.lireDonnees( new String("/home/baptiste/workspace/Cinema/src/data/bidon.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("/home/baptiste/workspace/Cinema/src/data/actors.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("/home/baptiste/workspace/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
 		
 		//LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/bidon.short"), lesActeurs, lesFilms );
-		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actors.short"), lesActeurs, lesFilms );
-		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actresses.short"), lesActeurs, lesFilms );
+		//LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actors.short"), lesActeurs, lesFilms );
+		//LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actresses.short"), lesActeurs, lesFilms );
 		
 		//AlgoConsole.menuConsole(lesActeurs,lesFilms);
+
 		CineFrame f = new CineFrame(lesActeurs, lesFilms);
 
 	}
