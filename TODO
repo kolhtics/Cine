@@ -2,8 +2,6 @@ ToDo:
 
 - Faire un completation auto des recherches
 
-- coder AlgoJeu qui permetra de jouer
-
 - MABITE possède une grosse distance de levenshtein :
 
 entier DistanceDeLevenshtein(caractere chaine1[1..longueurChaine1], caractere chaine2[1..longueurChaine2])
