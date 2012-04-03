@@ -60,7 +60,7 @@ public class BoutonEcouteur implements ActionListener {
 				new BoiteDialog(f, "Veuillez remplir tous les champs !!");
 			}
 			else{
-				String s = AlgoBot.testGraphique(t1.getText(), t2.getText(), lesActeurs, lesFilms);
+				String s = AlgoBot.jouer(t1.getText(), t2.getText(), lesActeurs, lesFilms);
 				b.setTexte(s);
 			}
 		}
@@ -78,7 +78,7 @@ public class BoutonEcouteur implements ActionListener {
 				new BoiteDialog(f ,"Veuillez remplir tous les champs !!");
 			}
 			else{
-				SolutionFrame f= new SolutionFrame(AlgoBot.testGraphique(t1.getText(), t2.getText(), lesActeurs, lesFilms));
+				SolutionFrame f= new SolutionFrame(AlgoBot.jouer(t1.getText(), t2.getText(), lesActeurs, lesFilms));
 			}
 		}
 		if(bouton.equals("Ok")){
@@ -90,7 +90,7 @@ public class BoutonEcouteur implements ActionListener {
 			}
 		}
 		if(bouton.equals("Back")){ 
-			if(j.getListReponse().getItemCount() == 0){
+			if(j.getListReponse().getItemCount() <= 1){
 				new BoiteDialog(f ,"Aucun element a enlever dans la liste de droite pignouf!!");
 			}
 			else{
