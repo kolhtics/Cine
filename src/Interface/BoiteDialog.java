@@ -16,7 +16,7 @@ public class BoiteDialog extends Dialog implements ActionListener, WindowListene
 	public BoiteDialog(Frame f, String message){
 		super(f, "Attention", true);
 		this.setLayout(new BorderLayout());
-		this.setSize(300,150);
+		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(
 		        (screenSize.width-this.getWidth())/2,
@@ -28,6 +28,8 @@ public class BoiteDialog extends Dialog implements ActionListener, WindowListene
 		Button ok = new Button("Fermer");
 		this.add(l, BorderLayout.CENTER);
 		this.add(ok, BorderLayout.SOUTH);
+		
+		this.setSize(message.length()*5+50,150);
 		
 		this.addWindowListener(this);
 		ok.addActionListener(this);

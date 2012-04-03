@@ -12,7 +12,7 @@ import Ecouteurs.*;
 public class PanelBot extends Panel{
 	private Repertoire<Acteur> lesActeurs;
 	private Repertoire<Film> lesFilms;
-	private Console textRes;
+	private TextArea textRes;
 
 	public PanelBot(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		this.setLayout(new BorderLayout());
@@ -41,7 +41,8 @@ public class PanelBot extends Panel{
 		// Creation du panel qui va contenir le resultat 
 		Panel panel4 = new Panel(new BorderLayout());
 		panel4.setBackground(Color.WHITE);
-		textRes = new Console("");
+		textRes = new TextArea();
+		textRes.setEditable(false);
 
 		
 		panel4.add(textRes);

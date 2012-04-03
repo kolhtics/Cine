@@ -12,6 +12,7 @@ public class PanelJeu extends Panel{
 	final static int TAILLE_LISTE = 15;
 	private List listElement, listReponse;
 	private Label LabelListe;
+	Label LabelCompteur;
 	private Repertoire<Acteur> lesActeurs;
 	private Repertoire<Film> lesFilms;
 
@@ -38,10 +39,10 @@ public class PanelJeu extends Panel{
 			panel1.add(boutonJouer);
 			
 			Panel panel2 =new Panel(new GridLayout(1,2, 10, 5));
-			LabelListe =new Label("", Label.CENTER);
-			Label LabelVictoire =new Label("nombres de coups : 2", Label.CENTER);
+			LabelListe =new Label("Veuillez entrer des acteurs", Label.CENTER);
+			LabelCompteur =new Label("Nombre de coups : 0", Label.CENTER);
 			panel2.add(LabelListe);
-			panel2.add(LabelVictoire);
+			panel2.add(LabelCompteur);
 			
 			
 			Panel panelList = new Panel(new GridLayout(1,2, 10, 5));
@@ -68,7 +69,8 @@ public class PanelJeu extends Panel{
 			
 			boutonJouer.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
 			bloque.addActionListener(new BoutonEcouteur(textActeur1, textActeur2, lesActeurs, lesFilms));
-			ok.addActionListener(new BoutonEcouteur(this,textActeur1, textActeur2, lesActeurs, lesFilms));
+			ok.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
+			boutonBack.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
 			this.setVisible(true);
 			
 			
@@ -98,9 +100,24 @@ public class PanelJeu extends Panel{
 			LabelListe.setText(s);
 			LabelListe.repaint();
 		}
+		
+		public void setLabelCompteur(String s) {
+			LabelCompteur.setText(s);
+			LabelCompteur.repaint();
+		}
 
 		public List getlistElement() {
 			return listElement;
+		}
+		
+		public List getListReponse(){
+			return listReponse;
+		}
+
+		public void remiseZero() {
+			this.listElement.removeAll();
+			this.listReponse.removeAll();
+			
 		}
 		
 		
