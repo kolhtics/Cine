@@ -31,7 +31,7 @@ public class Test {
 		//LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actors.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actresses.short"), lesActeurs, lesFilms );
 		
-		//AlgoConsole.menuConsole(lesActeurs,lesFilms);
+		//AlgoBot.menuConsole(lesActeurs,lesFilms);
 
 		CineFrame f = new CineFrame(lesActeurs, lesFilms);
 	}
