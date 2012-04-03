@@ -47,6 +47,7 @@ public class PanelJeu extends Panel{
 			
 			Panel panelList = new Panel(new GridLayout(1,2, 10, 5));
 			listElement = new List(TAILLE_LISTE);
+			listElement.setSize(100, 100);
 			listReponse = new List(TAILLE_LISTE);
 			
 			

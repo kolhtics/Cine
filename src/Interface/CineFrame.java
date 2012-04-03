@@ -8,7 +8,7 @@ import Ecouteurs.*;
 
 public class CineFrame extends Frame{
 	final static int HAUTEUR = 600;
-	final static int LARGEUR = 550;
+	final static int LARGEUR = 600;
 	private Repertoire<Acteur> lesActeurs;
 	private Repertoire<Film> lesFilms;
 	private Panel panelImage;
