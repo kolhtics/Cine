@@ -12,16 +12,27 @@ import CinemaPackage.*;
 
 public class AlgoBot {
 	
-	//Probleme quand l'acteur de depart et l'acteur cible on leur premier film en commun
-	//Meme probleme dans AlgoConsole
-	public static String testGraphique(String act1, String act2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
+	public static void menuConsole(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms){
+		System.out.println("Acteur 1");
+		Acteur a1= lesActeurs.rechercher(Keyboard.getString());
+		System.out.println("Acteur 2");
+		Acteur a2= lesActeurs.rechercher(Keyboard.getString());
+		String s = plusCourteChaine(lesActeurs,lesFilms,a1,a2);
+		System.out.println(s);
+	}
+	
+	public static String jouer(String act1, String act2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		Acteur a1= lesActeurs.rechercher(act1);
 		Acteur a2= lesActeurs.rechercher(act2);
 		String s="";
-		if (a1 == null){
+		if (a1 == null && a2 == null){
+			s = s+act1+" n'existe pas\n";
+			s= s+act2+" n'existe pas\n";
+		}
+		else if(a1 == null){
 			s = s+act1+" n'existe pas\n";
 		}
-		if (a2 == null){
+		else if(a2 == null){
 			s= s+act2+" n'existe pas\n";
 		}
 		else s=plusCourteChaine(lesActeurs,lesFilms,a1,a2);
@@ -33,7 +44,12 @@ public class AlgoBot {
 	public static String plusCourteChaine(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms,Acteur acteurDepart,Acteur cible){
 		Film film= cible.filmEnCommun(acteurDepart);
 		if ( film != null){
-			return  "L'acteur "+acteurDepart.getNom()+"\na  joue dans : "+film.getId()+"\navec : "+cible.getNom();
+			return  "==============================================\n" +
+					"==================== SOLUTION ================\n" +
+					"==============================================\n\n" +
+					"L'acteur "+acteurDepart.getNom()+"\n" +
+				    "a joue dans : "+film.getId()+"\n" +
+				    "avec : "+cible.getNom();
 		}
 		else {
 			Set<Film> objectif=new TreeSet<Film>();
@@ -107,7 +123,11 @@ public class AlgoBot {
 	}
 
 	public static String getChaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
-		String s =  "L'acteur de depart : "+acteurDepart.getNom()+"\na  joue dans : ";
+		String s =  "==============================================\n" +
+				    "==================== SOLUTION =================\n" +
+				    "==============================================\n\n " + 
+				    "L'acteur de depart : "+acteurDepart.getNom()+"\n" +
+				    "a  joue dans : ";
 		Acteur a1=acteurDepart;
 		Acteur a2=solution.poll();
 		Acteur dernierAct=a2;
