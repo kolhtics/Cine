@@ -7,6 +7,7 @@ import java.util.*;
 
 import CinemaPackage.*;
 import Interface.*;
+import data.*;
 
 public class Test {
 	
@@ -16,20 +17,9 @@ public class Test {
 		Repertoire<Acteur> lesActeurs = new Repertoire<Acteur>();
 		Repertoire<Film> lesFilms = new Repertoire<Film>();
 		
-		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actors.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("C:/eclipse/Workspace/actresses.short"), lesActeurs, lesFilms );
-		
-		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actors.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("H:/workspace/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("H:/workspace/cinema/src/data/bidon.short"), lesActeurs, lesFilms );
-		
-		//LecteurBD.lireDonnees( new String("/home/baptiste/workspace/Cinema/src/data/bidon.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("/home/baptiste/workspace/Cinema/src/data/actors.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("/home/baptiste/workspace/Cinema/src/data/actresses.short"), lesActeurs, lesFilms );
-		
-		LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/bidon.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actors.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("D:/Programmation/Java/Cine/src/data/actresses.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("data/bidon.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("data/actresses.short"), lesActeurs, lesFilms );
+		LecteurBD.lireDonnees( new String("data/actors.short"), lesActeurs, lesFilms );
 		
 		//AlgoBot.menuConsole(lesActeurs,lesFilms);
 
