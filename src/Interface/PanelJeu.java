@@ -4,17 +4,15 @@ import java.awt.*;
 import java.util.Iterator;
 
 import CinemaPackage.*;
-import Interface.*;
-import Algorithme.*;
 import Ecouteurs.*;
 
 public class PanelJeu extends Panel{
+	private static final long serialVersionUID = 1L;
 	final static int TAILLE_LISTE = 15;
 	private List listElement, listReponse;
 	private Label LabelListe;
 	Label LabelCompteur;
 	private Repertoire<Acteur> lesActeurs;
-	private Repertoire<Film> lesFilms;
 
 		public PanelJeu(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 			this.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 10));
@@ -22,7 +20,6 @@ public class PanelJeu extends Panel{
 			this.setBackground(Color.LIGHT_GRAY);
 			
 			this.lesActeurs=lesActeurs;
-			this.lesFilms=lesFilms;
 			
 
 			Panel panel1 = new Panel(new GridLayout(5,1, 200, 5));
@@ -66,11 +63,12 @@ public class PanelJeu extends Panel{
 			this.add(panel3);
 
 
-			
+			listElement.addActionListener(new SourisEcouteur(this,textActeur1, textActeur2, lesActeurs, lesFilms));//permet le double clique pour selectionner un item
 			boutonJouer.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
 			bloque.addActionListener(new BoutonEcouteur(textActeur1, textActeur2, lesActeurs, lesFilms));
 			ok.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
 			boutonBack.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
+			
 			this.setVisible(true);
 			
 			
@@ -83,12 +81,17 @@ public class PanelJeu extends Panel{
 				listElement.add(it.next().getId());
 			}
 		}
+
 		
-		public void setListElement (Film f){
-			listElement.removeAll();
-			Iterator<Acteur> it=f.iterator();
+		public void setListElement (Film f, String act){
+			listElement.removeAll(); // on efface tout les elements de la list pou rapartir sur de bonnes bases
+			Iterator<Acteur> it=f.iterator(); // recupere les acteurs du film f
+			Acteur a= lesActeurs.rechercher(act); // a est l'acteur que l'on ne veut pas afficher dans la liste
 			while (it.hasNext()){
-				listElement.add(it.next().getId());
+				String acteurCourant = it.next().getId();
+				if(!a.getId().equals(acteurCourant)){ // si l'acteur a afficher n'est pas le meme que l'acteur sur lequel on vient de cliquer
+					listElement.add(acteurCourant); // alors on affiche cet acteur
+				}									// cela nous permet de ne pas afficher l'acteur dans la liste des acteurs de ses propres films
 			}
 		}
 
