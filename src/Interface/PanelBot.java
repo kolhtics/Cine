@@ -1,26 +1,19 @@
 package Interface;
 
 import java.awt.*;
-import java.util.Queue;
 
 import CinemaPackage.*;
-import Interface.*;
-import Algorithme.*;
 import Ecouteurs.*;
 
 
 public class PanelBot extends Panel{
-	private Repertoire<Acteur> lesActeurs;
-	private Repertoire<Film> lesFilms;
+	private static final long serialVersionUID = 1L;
 	private TextArea textRes;
 
 	public PanelBot(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.LIGHT_GRAY);
 		
-		this.lesActeurs=lesActeurs;
-		this.lesFilms=lesFilms;
-
 		/* Creation du panel qui va contenir les bouttons et les textfields */
 		//Panel 1
 		Panel panel1 = new Panel(new GridLayout(1,5)); //ajouter bouton back

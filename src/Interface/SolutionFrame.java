@@ -4,13 +4,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Algorithme.AlgoBot;
-import CinemaPackage.Acteur;
-import CinemaPackage.Film;
-import CinemaPackage.Repertoire;
 import Ecouteurs.FermerFenetreEcouteur;
 
 public class SolutionFrame extends Frame implements ActionListener{
+	private static final long serialVersionUID = 1L;
 	private final int HAUTEUR=300;
 	private final int LARGEUR=400;
 	

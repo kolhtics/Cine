@@ -3,18 +3,13 @@ package Interface;
 import java.awt.*;
 import java.awt.event.*;
 
-import CinemaPackage.*;
-import Interface.*;
-import Algorithme.*;
-import Ecouteurs.*;
-
 
 public class BoiteDialog extends Dialog implements ActionListener, WindowListener{
-	private Frame f;
-	private String message;
-	
-	public BoiteDialog(Frame f, String message){
-		super(f, "Attention", true);
+
+	private static final long serialVersionUID = 1L;
+
+	public BoiteDialog(Frame f, String titre, String message){
+		super(f, titre, true);
 		this.setLayout(new BorderLayout());
 			
 		Label l = new Label(message, Label.CENTER);
@@ -34,6 +29,10 @@ public class BoiteDialog extends Dialog implements ActionListener, WindowListene
 		ok.addActionListener(this);
 		
 		this.setVisible(true);
+	}
+	
+	public BoiteDialog(Frame f, String message){
+		this(f, "Attention", message);
 	}
 	
 	public void actionPerformed(ActionEvent e) {

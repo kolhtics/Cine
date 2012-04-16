@@ -7,10 +7,9 @@ import Ecouteurs.*;
 
 
 public class CineFrame extends Frame{
+	private static final long serialVersionUID = 1L; // je sais pas ce que c'est mais ca enleve un warning
 	final static int HAUTEUR = 600;
 	final static int LARGEUR = 600;
-	private Repertoire<Acteur> lesActeurs;
-	private Repertoire<Film> lesFilms;
 	private Panel panelImage;
 	private Panel panelBot;
 	private Panel panelJeu;
@@ -32,7 +31,7 @@ public class CineFrame extends Frame{
 		        );
 		
 		
-		panelImage = new ImagePanel();
+		panelImage = new PanelImage();
 		panelBot = new PanelBot(lesActeurs, lesFilms);
 		panelJeu = new PanelJeu(lesActeurs, lesFilms);
 
