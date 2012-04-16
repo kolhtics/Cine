@@ -4,16 +4,14 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-import CinemaPackage.*;
-import Interface.*;
-import Algorithme.*;
-import Ecouteurs.*;
 
 import javax.imageio.ImageIO;
 
-public class ImagePanel extends Panel{
+public class PanelImage extends Panel{
 	
-	public ImagePanel(){
+	private static final long serialVersionUID = 1L;
+
+	public PanelImage(){
 	}
 	
 	public void paint(Graphics g){
