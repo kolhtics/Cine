@@ -1,9 +1,10 @@
 package CinemaPackage;
 
-import java.lang.Process;
+//ne sert a rien (servait pour la barre de progression)
+/*import java.lang.Process;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.IOException;*/
 
 
 /**
@@ -18,11 +19,14 @@ import java.io.IOException;
 public class LecteurBD
 {
 
-	/**
-	 * Retourne le nombre de lignes contenues dans le fichier
-	 * identifié par la chaine 'fichier'
-	 */
-	private static int getNombreDeLignes( String fichier )
+	///**
+	// * Retourne le nombre de lignes contenues dans le fichier
+	// * identifié par la chaine 'fichier'
+	// */
+	
+	//ne sert a rien (servait pour la barre de progression)
+	
+	/*private static int getNombreDeLignes( String fichier ) 
 	{
 		String s = null;
 		String commande = new String("wc -l ") + fichier;
@@ -47,7 +51,7 @@ public class LecteurBD
 
 		return nb_lignes.intValue();
 
-	}
+	}*/
 
 
 	/**
@@ -62,7 +66,7 @@ public class LecteurBD
 		LecteurLigneParLigne lll = new LecteurLigneParLigne( fichier );
 
 		System.out.println("# Lecture du fichier de données : " + fichier );
-		int nb_lignes_total = getNombreDeLignes( fichier );
+		//int nb_lignes_total = getNombreDeLignes( fichier ); ne sert a rien (servait pour la barre de progression)
 		while ( ! lll.lectureTermine() )
 		{
 			String s = lll.ligneSuivante();
