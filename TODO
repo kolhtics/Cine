@@ -28,3 +28,5 @@ entier DistanceDeLevenshtein(caractere chaine1[1..longueurChaine1], caractere ch
 retourner d[longueurChaine1, longueurChaine2]
 
  - a la place des if pour faire les verification, faire des try catch (c'est plus pro)
+ 
+ - faire des barres de progressions pour plus de fun
