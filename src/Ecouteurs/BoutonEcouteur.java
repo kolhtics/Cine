@@ -77,21 +77,15 @@ public class BoutonEcouteur implements ActionListener {
 		}
 		
 		if(bouton.equals("Ok")){
-			if(j.getlistElement().getSelectedItem() != null){
-				AlgoJeu.suivant(j, j.getlistElement().getSelectedItem(), t2.getText(), lesActeurs, lesFilms);
-			}
-			else{
+			try{
 				new BoiteDialog(f , "Veuillez selectionner un item dans la liste de gauche");
+			}
+			catch(NullPointerException e){
+				AlgoJeu.suivant(j, j.getlistElement().getSelectedItem(), t2.getText(), lesActeurs, lesFilms);
 			}
 		}
 		
 		if(bouton.equals("Back")){ 
-			/*if(j.getListReponse().getItemCount() <= 1){
-				new BoiteDialog(f , "Aucun element a enlever dans la liste de droite pignouf!!");
-			}
-			else{
-				AlgoJeu.back(j, lesActeurs, lesFilms); }
-			}*/
 			try{
 				AlgoJeu.back(j, lesActeurs, lesFilms); 
 			}
