@@ -10,13 +10,14 @@ public class Main {
 		Repertoire<Acteur> lesActeurs = new Repertoire<Acteur>();
 		Repertoire<Film> lesFilms = new Repertoire<Film>();
 		
+		
 		LecteurBD.lireDonnees( new String("data/bidon.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("data/actresses.short"), lesActeurs, lesFilms );
 		//LecteurBD.lireDonnees( new String("data/actors.short"), lesActeurs, lesFilms );
-		
 		//AlgoBot.menuConsole(lesActeurs,lesFilms);
 
-		new CineFrame(lesActeurs, lesFilms);
+			new CineFrame(lesActeurs, lesFilms);
+		
 	}
 	
 }
