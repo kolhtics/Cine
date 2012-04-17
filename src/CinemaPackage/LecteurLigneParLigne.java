@@ -1,6 +1,8 @@
 package CinemaPackage;
 import java.io.*;
 
+import Interface.BoiteDialog;
+
 public class LecteurLigneParLigne {
 
 	private BufferedReader b;
@@ -15,7 +17,9 @@ public class LecteurLigneParLigne {
 			b = new BufferedReader(ipsr);
 		}		
 		catch (Exception e){
-			System.out.println(e.toString());
+			//System.out.println(e.toString());
+			new BoiteDialog(null, "Les fichers de bases de donnée n'ont pas étés trouvés !!");
+			System.exit(0);
 		}
 	}
 
