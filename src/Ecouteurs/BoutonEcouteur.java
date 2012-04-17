@@ -42,8 +42,8 @@ public class BoutonEcouteur implements ActionListener {
 
 	
 
-	public void actionPerformed(ActionEvent e) {
-		String bouton = e.getActionCommand();	
+	public void actionPerformed(ActionEvent a) {
+		String bouton = a.getActionCommand();	
 		if(bouton.equals("Mode Jeu")) { f.setPanelJeu(); f.reconstruire(); }
 		if(bouton.equals("Mode Bot")) { f.setPanelBot(); f.reconstruire(); }
 		if(bouton.equals("Menu")) { f.setPanelImage(); f.reconstruire(); }
@@ -86,12 +86,20 @@ public class BoutonEcouteur implements ActionListener {
 		}
 		
 		if(bouton.equals("Back")){ 
-			if(j.getListReponse().getItemCount() <= 1){
+			/*if(j.getListReponse().getItemCount() <= 1){
 				new BoiteDialog(f , "Aucun element a enlever dans la liste de droite pignouf!!");
 			}
 			else{
 				AlgoJeu.back(j, lesActeurs, lesFilms); }
+			}*/
+			try{
+				AlgoJeu.back(j, lesActeurs, lesFilms); 
 			}
-	}
+			catch(ArrayIndexOutOfBoundsException e1){
+				new BoiteDialog(f , "Aucun element a enlever dans la liste de droite pignouf!!");
+			}
+		
+		}
 
+	}
 }
