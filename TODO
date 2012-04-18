@@ -2,27 +2,27 @@ ToDo:
 
 - Faire un completation auto des recherches
 
-- MABITE possède une grosse distance de levenshtein :
+- MABITE possï¿½de une grosse distance de levenshtein :
 
 entier DistanceDeLevenshtein(caractere chaine1[1..longueurChaine1], caractere chaine2[1..longueurChaine2])
-   // d est un tableau de longueurChaine1+1 rangées et longueurChaine2+1 colonnes
+   // d est un tableau de longueurChaine1+1 rangï¿½es et longueurChaine2+1 colonnes
    declarer entier d[0..longueurChaine1, 0..longueurChaine2]
-   // i et j itèrent sur chaine1 et chaine2
-   declarer entier i, j, coût
+   // i et j itï¿½rent sur chaine1 et chaine2
+   declarer entier i, j, coï¿½t
 
-   pour i de 0 à longueurChaine1
+   pour i de 0 ï¿½ longueurChaine1
        d[i, 0] := i
-   pour j de 0 à longueurChaine2
+   pour j de 0 ï¿½ longueurChaine2
        d[0, j] := j
 
-   pour i de 1 à longueurChaine1
-       pour j de 1 à longueurChaine2
-           si chaine1[i] = chaine2[j] alors coût := 0
-                                sinon coût := 1
+   pour i de 1 ï¿½ longueurChaine1
+       pour j de 1 ï¿½ longueurChaine2
+           si chaine1[i] = chaine2[j] alors coï¿½t := 0
+                                sinon coï¿½t := 1
            d[i, j] := minimum(
                                 d[i-1, j  ] + 1,     // effacement
                                 d[i,   j-1] + 1,     // insertion
-                                d[i-1, j-1] + coût   // substitution
+                                d[i-1, j-1] + coï¿½t   // substitution
                              )
 							 
 retourner d[longueurChaine1, longueurChaine2]
@@ -30,3 +30,22 @@ retourner d[longueurChaine1, longueurChaine2]
  - a la place des if pour faire les verification, faire des try catch (c'est plus pro)
  
  - faire des barres de progressions pour plus de fun
+ 
+ -Faire un truc pour dire que la recherche est en cours avec un thread dans mode b ot (affichage dans un label qu'il faudra ajouter ou dans le text area)
+(Assez dur je pense, a faire rapidement)
+
+-faire un menu deroulant en haut ( comme dans tout les programmes)
+( Facile, pas urgent)
+
+-elever le bouton menu
+(facile, urgent, a faire en mÃªme temps que de faire la window de dÃ©marrage)
+
+- faire des boutons pour reset le jeu, les textfield... (Moyen dur voir facile, pas urgent)
+
+-faire une window qui s'affichera pendant le chargement des fichiers avec l'image cinema.(Facile, a absolument faire)
+
+- faire dans le menu deroulant une partit credit qui ouvre une solutionframe avec les credit et des astuces (pas urgent, facile)
+
+- faire un cheat dans mode bot pour afficher une petite animation en ascii art dans le textarea avec des threads (pas urgent, long et assez dur mais marrant)
+Faire une fenetre recherche de film ou d'acteur a la place de menu
+on fera le bordel en ascii la dedant
