@@ -1,7 +1,8 @@
-package CinemaPackage;
+package cinemaPackage;
+import interfaceGraphique.BoiteDialog;
+
 import java.io.*;
 
-import Interface.BoiteDialog;
 
 public class LecteurLigneParLigne {
 

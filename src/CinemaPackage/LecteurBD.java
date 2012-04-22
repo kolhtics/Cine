@@ -1,4 +1,4 @@
-package CinemaPackage;
+package cinemaPackage;
 
 //ne sert a rien (servait pour la barre de progression)
 /*import java.lang.Process;

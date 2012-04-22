@@ -1,4 +1,4 @@
-package CinemaPackage;
+package cinemaPackage;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package CinemaPackage;
+package cinemaPackage;
 import java.io.*;
 
 	public class Keyboard {

@@ -1,4 +1,4 @@
-package CinemaPackage;
+package cinemaPackage;
 
 interface Identifiable 
 {

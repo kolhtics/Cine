@@ -1,4 +1,4 @@
-package Algorithme;
+package algorithme;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,7 +8,8 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.TreeSet;
 
-import CinemaPackage.*;
+import cinemaPackage.*;
+
 
 public class AlgoBot {
 	

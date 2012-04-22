@@ -1,10 +1,10 @@
-package Algorithme;
+package algorithme;
 
-import CinemaPackage.Acteur;
-import CinemaPackage.Film;
-import CinemaPackage.Repertoire;
-import Interface.BoiteDialog;
-import Interface.PanelJeu;
+import interfaceGraphique.BoiteDialog;
+import interfaceGraphique.PanelJeu;
+import cinemaPackage.Acteur;
+import cinemaPackage.Film;
+import cinemaPackage.Repertoire;
 
 public class AlgoJeu {
 	private static int compteur=0;
