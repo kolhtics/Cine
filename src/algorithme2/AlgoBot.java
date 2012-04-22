@@ -1,4 +1,4 @@
-package algorithme;
+package algorithme2;
 
 import java.util.HashMap;
 import java.util.Iterator;

@@ -8,7 +8,7 @@ import cinemaPackage.Acteur;
 import cinemaPackage.Film;
 import cinemaPackage.Repertoire;
 
-import algorithme.AlgoJeu;
+import algorithme2.AlgoJeu;
 
 
 public class SourisEcouteur implements ActionListener {

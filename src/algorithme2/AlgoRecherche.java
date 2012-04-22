@@ -1,4 +1,4 @@
-package algorithme;
+package algorithme2;
 
 import cinemaPackage.Acteur;
 import cinemaPackage.Film;
