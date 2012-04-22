@@ -1,12 +1,15 @@
-package Ecouteurs;
+package ecouteurs;
+
+import interfaceGraphique.*;
 
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Algorithme.*;
-import CinemaPackage.*;
-import Interface.*;
+import cinemaPackage.*;
+
+import algorithme.*;
+
 
 public class BoutonEcouteur implements ActionListener {
 	private TextField t1;
@@ -16,6 +19,7 @@ public class BoutonEcouteur implements ActionListener {
 	private CineFrame f;
 	private PanelBot b;
 	private PanelJeu j;
+	private PanelRechercher r;
 	
 	
 	public BoutonEcouteur(TextField t1, TextField t2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
@@ -42,11 +46,19 @@ public class BoutonEcouteur implements ActionListener {
 
 	
 
+	public BoutonEcouteur(PanelRechercher r, TextField t1, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms) {
+		this.lesActeurs=lesActeurs;
+		this.lesFilms=lesFilms;
+		this.t1=t1;
+		this.r=r;
+	}
+
+
 	public void actionPerformed(ActionEvent a) {
 		String bouton = a.getActionCommand();	
-		if(bouton.equals("Mode Jeu")) { f.setPanelJeu(); f.reconstruire(); }
+		/*if(bouton.equals("Mode Jeu")) { f.setPanelJeu(); f.reconstruire(); }
 		if(bouton.equals("Mode Bot")) { f.setPanelBot(); f.reconstruire(); }
-		if(bouton.equals("Menu")) { f.setPanelImage(); f.reconstruire(); }
+		if(bouton.equals("Mode Recherche")) { f.setPanelImage(); f.reconstruire(); }*/
 		if(bouton.equals("Resoudre")) {
 			if(t1.getText().equals("") | t2.getText().equals("")){
 				new BoiteDialog(f, "Veuillez remplir tous les champs !!");
@@ -93,6 +105,16 @@ public class BoutonEcouteur implements ActionListener {
 				new BoiteDialog(f , "Aucun element a enlever dans la liste de droite pignouf!!");
 			}
 		
+		}
+		
+		if(bouton.equals("Rechercher")){
+			try{
+				String s = AlgoRecherche.rechercher(t1.getText(), lesActeurs, lesFilms);
+				r.setTexte(s);
+			}
+			catch(NullPointerException e){
+				new BoiteDialog(f , "Veuillez remplir tous les champs !!");
+			}
 		}
 
 	}
