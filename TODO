@@ -37,15 +37,15 @@ retourner d[longueurChaine1, longueurChaine2]
 -faire un menu deroulant en haut ( comme dans tout les programmes)
 ( Facile, pas urgent)
 
--elever le bouton menu
-(facile, urgent, a faire en même temps que de faire la window de démarrage)
-
 - faire des boutons pour reset le jeu, les textfield... (Moyen dur voir facile, pas urgent)
 
--faire une window qui s'affichera pendant le chargement des fichiers avec l'image cinema.(Facile, a absolument faire)
 
 - faire dans le menu deroulant une partit credit qui ouvre une solutionframe avec les credit et des astuces (pas urgent, facile)
 
 - faire un cheat dans mode bot pour afficher une petite animation en ascii art dans le textarea avec des threads (pas urgent, long et assez dur mais marrant)
 Faire une fenetre recherche de film ou d'acteur a la place de menu
 on fera le bordel en ascii la dedant
+
+- refaire l'organisation de panelRechercher parce que c'est assez moche en faite
+
+ - peut etre tout repasser en JFrame Jpanel ect...
