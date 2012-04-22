@@ -1,4 +1,4 @@
-package Ecouteurs;
+package ecouteurs;
 
 
 import java.awt.*;
