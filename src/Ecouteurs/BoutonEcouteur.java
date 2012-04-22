@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 import cinemaPackage.*;
 
-import algorithme2.*;
+import algorithme.*;
 
 
 public class BoutonEcouteur implements ActionListener {

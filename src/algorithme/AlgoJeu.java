@@ -1,4 +1,4 @@
-package algorithme2;
+package algorithme;
 
 import interfaceGraphique.BoiteDialog;
 import interfaceGraphique.PanelJeu;

@@ -1,4 +1,4 @@
-package algorithme2;
+package algorithme;
 
 
 public class Test {
