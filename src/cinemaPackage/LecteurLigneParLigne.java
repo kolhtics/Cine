@@ -19,7 +19,7 @@ public class LecteurLigneParLigne {
 		}		
 		catch (Exception e){
 			//System.out.println(e.toString());
-			new BoiteDialog(null, "Les fichers de bases de donnée n'ont pas étés trouvés !!");
+			new BoiteDialog(null, "Les fichers de bases de donnï¿½e n'ont pas ï¿½tï¿½s trouvï¿½s !!");
 			System.exit(0);
 		}
 	}

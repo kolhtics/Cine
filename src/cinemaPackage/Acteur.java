@@ -58,7 +58,7 @@ public class Acteur implements Identifiable, Comparable<Acteur>
 	}
 	
 	/**
-	 * Determine si un acteur a joué dans un film donné
+	 * Determine si un acteur a jouï¿½ dans un film donnï¿½
 	 */
 	public boolean joueDans(Film f){
 		Iterator<Film> it=iterator();
