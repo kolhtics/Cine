@@ -25,15 +25,20 @@ public class PanelRechercher extends Panel{
 	
 	/* Creation du panel qui va contenir les bouttons et les textfields */
 	//Panel 1
-	Panel panel1 = new Panel(new GridLayout(1,3));
-	Label LabelActeur1 = new Label("Acteur 1");
-	TextField textActeur1 = new TextField("ok", 20);
+	Panel panel1 = new Panel(new GridLayout(1,7));
+	Label LabelActeur1 = new Label("Acteur");
+	TextField textActeur1 = new TextField("", 20);
+	Button boutonRechercheListe = new Button ("Recherche Liste");
 	Button boutonRechercher = new Button ("Rechercher");
-
+	Button recherchePrenom = new Button ("Par Prenom");
+	Button rechercheNom = new Button ("Par Nom");
+	
 	panel1.add(LabelActeur1);
 	panel1.add(textActeur1);
+	panel1.add(boutonRechercheListe);
 	panel1.add(boutonRechercher);
-
+	panel1.add(recherchePrenom);
+	panel1.add(rechercheNom);
 
 
 	// Creation du panel qui va contenir le resultat 
@@ -52,9 +57,11 @@ public class PanelRechercher extends Panel{
 	this.add(panel0, BorderLayout.NORTH);
 	this.add(panel4, BorderLayout.CENTER);
 
-	
+	boutonRechercheListe.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
 	boutonRechercher.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
-
+	recherchePrenom.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
+	rechercheNom.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
+	
 	this.setVisible(true);
 
 }

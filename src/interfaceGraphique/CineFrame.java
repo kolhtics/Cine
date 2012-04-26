@@ -11,9 +11,9 @@ import ecouteurs.*;
 
 
 public class CineFrame extends Frame{
-	private static final long serialVersionUID = 1L; // je sais pas ce que c'est mais ca enleve un warning
+	private static final long serialVersionUID = 1L;
 	final static int HAUTEUR = 600;
-	final static int LARGEUR = 600;
+	final static int LARGEUR = 920;
 	private Panel panelRechercher;
 	private Panel panelBot;
 	private Panel panelJeu;

@@ -17,11 +17,11 @@ public class PanelBot extends Panel{
 		
 		/* Creation du panel qui va contenir les bouttons et les textfields */
 		//Panel 1
-		Panel panel1 = new Panel(new GridLayout(1,5)); //ajouter bouton back
+		Panel panel1 = new Panel(new GridLayout(1,5,10, 5));
 		Label LabelActeur1 = new Label("Acteur 1");
-		TextField textActeur1 = new TextField("ok", 20);
+		TextField textActeur1 = new TextField("", 20);
 		Label LabelActeur2 = new Label("Acteur 2");
-		TextField textActeur2 = new TextField("b", 20);
+		TextField textActeur2 = new TextField("", 20);
 		Button bouttonJouer = new Button ("Resoudre");
 
 		panel1.add(LabelActeur1);

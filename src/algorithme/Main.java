@@ -22,6 +22,8 @@ public class Main {
 
 		new CineFrame(lesActeurs, lesFilms);
 		
+		//System.out.print(AlgoRecherche.recherche_acteur("robert",lesActeurs).toString());
+		//System.out.println("\n Distance : "+AlgoRecherche.Distance("robert", "robert1"));
 	}
 	
 }

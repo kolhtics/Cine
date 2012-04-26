@@ -120,7 +120,7 @@ public class AlgoBot {
 			solution_inverse.offer(a);
 			f=f2;
 		}
-		return solution_inverse;						// PENSER A INVERSER LA SOLUTION -> LOL
+		return solution_inverse;
 	}
 
 	public static String getChaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
@@ -134,7 +134,11 @@ public class AlgoBot {
 		Acteur dernierAct=a2;
 		while (a2!= null ){
 			Film f=a1.filmEnCommun(a2);
-			s += f.getTitre()+"\navec : ";
+			try{
+				s += f.getTitre()+"\navec : ";  
+			}catch (NullPointerException e){
+				return "Une erreur est survenue lors de la recherche : Pas de films en communs";
+			}
 			s += a2.getNom()+"\nqui a  joue dans : ";
 			a1=a2;
 			a2=solution.poll();

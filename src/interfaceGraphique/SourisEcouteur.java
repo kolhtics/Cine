@@ -33,6 +33,7 @@ public class SourisEcouteur implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if(j.getlistElement().getSelectedItem() != null){
 			AlgoJeu.suivant(j, j.getlistElement().getSelectedItem(), t2.getText(), lesActeurs, lesFilms);
+			j.validate();
 		}
 		else{
 			new BoiteDialog(null , "Veuillez selectionner un item dans la liste de gauche");

@@ -27,19 +27,17 @@ public class WindowImage extends Window{
 		        (screenSize.height-this.getHeight())/2
 		        );
 		
-		System.out.println("execution du window image");
 	}
 	
 	public int randomImage(){
 		int random = (int)(Math.random()*NB_IMAGES);
-		System.out.println("je suis la methode random et je m'execute : "+random); // verrification : cette methode s'execute plusieurs fois pour iune raison inconnue
+		System.out.println("Je suis la methode random et je m'execute :"+random);
 		return random;
 	}
 	
 	
 	public void paint(Graphics g){
 		try {
-			System.out.println("je suis la methode paint et je m'execute");
 			String image = String.valueOf(randomImage())+".png";
             Image img = ImageIO.read(new File("images/"+image));
             g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);

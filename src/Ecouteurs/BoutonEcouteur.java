@@ -69,17 +69,18 @@ public class BoutonEcouteur implements ActionListener {
 			}
 		}
 		
-		if(bouton.equals("JOUER")) {
+		else if(bouton.equals("JOUER")) {
 			j.remiseZero();
 			if(t1.getText().equals("") | t2.getText().equals("")){
 				new BoiteDialog(f, "Veuillez remplir tous les champs !!");
 			}
 			else{
 				AlgoJeu.jouer(j,t1.getText(), t2.getText(), lesActeurs, lesFilms);
+				j.validate();
 			}
 		}
 		
-		if(bouton.equals("Je suis bloque")){
+		else if(bouton.equals("Je suis bloque")){
 			if(t1.getText().equals("") | t2.getText().equals("")){
 				new BoiteDialog(f, "Veuillez remplir tous les champs !!");
 			}
@@ -88,34 +89,54 @@ public class BoutonEcouteur implements ActionListener {
 			}
 		}
 		
-		if(bouton.equals("Ok")){
+		else if(bouton.equals("Ok")){
 			try{
-				new BoiteDialog(f , "Veuillez selectionner un item dans la liste de gauche");
+				AlgoJeu.suivant(j, j.getlistElement().getSelectedItem(), t2.getText(), lesActeurs, lesFilms);
+				j.validate();
 			}
 			catch(NullPointerException e){
-				AlgoJeu.suivant(j, j.getlistElement().getSelectedItem(), t2.getText(), lesActeurs, lesFilms);
+				new BoiteDialog(f , "Veuillez selectionner un objet dans la liste de gauche");
 			}
 		}
 		
-		if(bouton.equals("Back")){ 
+		else if(bouton.equals("Back")){ 
 			try{
 				AlgoJeu.back(j, lesActeurs, lesFilms); 
+				j.validate();
 			}
 			catch(ArrayIndexOutOfBoundsException e1){
-				new BoiteDialog(f , "Aucun element a enlever dans la liste de droite pignouf!!");
+				new BoiteDialog(f , "Il n'y a plus rien a supprimer !");
 			}
 		
 		}
 		
-		if(bouton.equals("Rechercher")){
+		
+		else if(bouton.equals("Recherche Liste")){
 			try{
-				String s = AlgoRecherche.rechercher(t1.getText(), lesActeurs, lesFilms);
+				String s = AlgoRecherche.rechercher_liste(t1.getText(), lesActeurs, lesFilms);
 				r.setTexte(s);
 			}
 			catch(NullPointerException e){
-				new BoiteDialog(f , "Veuillez remplir tous les champs !!");
+				new BoiteDialog(f , "Ce film/acteur n'existe pas");
 			}
 		}
-
+		
+		else if(bouton.equals("Par Prenom")){
+				String s = AlgoRecherche.recherche_prenom(t1.getText(), lesActeurs);
+				r.setTexte(s);
+		}
+		else if(bouton.equals("Par Nom")){
+			String s = AlgoRecherche.recherche_nom(t1.getText(), lesActeurs);
+			r.setTexte(s);
+		}	
+		else if(bouton.equals("Rechercher")){
+			try{
+				String s = AlgoRecherche.recherche_test2(t1.getText(), lesActeurs);
+				r.setTexte(s);
+			}
+			catch(NullPointerException e){
+				new BoiteDialog(f , "Ce film/acteur n'existe pas");
+			}
+		}
 	}
 }

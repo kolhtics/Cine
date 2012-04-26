@@ -16,18 +16,18 @@ public class PanelJeu extends Panel{
 	private Repertoire<Acteur> lesActeurs;
 
 		public PanelJeu(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
-			this.setLayout(new FlowLayout(FlowLayout.CENTER, 200, 10));
+			this.setLayout(new FlowLayout(FlowLayout.CENTER, 300, 10));
 			//this.setLayout(new GridLayout(4,1));
 			this.setBackground(Color.LIGHT_GRAY);
 			
 			this.lesActeurs=lesActeurs;
 			
 
-			Panel panel1 = new Panel(new GridLayout(5,1, 200, 5));
+			Panel panel1 = new Panel(new GridLayout(5,1, 300, 5));
 			Label LabelActeur1 = new Label("Acteur 1");
-			TextField textActeur1 = new TextField("ok", 20);
+			TextField textActeur1 = new TextField("", 20);
 			Label LabelActeur2 = new Label("Acteur 2");
-			TextField textActeur2 = new TextField("b", 20);
+			TextField textActeur2 = new TextField("", 20);
 			Button boutonJouer = new Button ("JOUER");
 
 			panel1.add(LabelActeur1);
@@ -45,6 +45,7 @@ public class PanelJeu extends Panel{
 			
 			Panel panelList = new Panel(new GridLayout(1,2, 10, 5));
 			listElement = new List(TAILLE_LISTE);
+			listElement.getPreferredSize(TAILLE_LISTE+12);
 			listReponse = new List(TAILLE_LISTE);
 			
 			
@@ -123,6 +124,4 @@ public class PanelJeu extends Panel{
 			this.listReponse.removeAll();
 			
 		}
-		
-		
 }
