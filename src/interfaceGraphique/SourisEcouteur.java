@@ -4,11 +4,12 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import algorithme.AlgoJeu;
+
 import cinemaPackage.Acteur;
 import cinemaPackage.Film;
 import cinemaPackage.Repertoire;
 
-import algorithme.AlgoJeu;
 
 
 public class SourisEcouteur implements ActionListener {

@@ -12,15 +12,7 @@ import cinemaPackage.*;
 
 
 public class AlgoBot {
-	
-	public static void menuConsole(Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms){
-		System.out.println("Acteur 1");
-		Acteur a1= lesActeurs.rechercher(Keyboard.getString());
-		System.out.println("Acteur 2");
-		Acteur a2= lesActeurs.rechercher(Keyboard.getString());
-		String s = plusCourteChaine(lesActeurs,lesFilms,a1,a2);
-		System.out.println(s);
-	}
+	private static Boolean trouve = false;
 	
 	public static String jouer(String act1, String act2, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		Acteur a1= lesActeurs.rechercher(act1);
@@ -36,7 +28,10 @@ public class AlgoBot {
 		else if(a2 == null){
 			s= s+act2+" n'existe pas\n";
 		}
-		else s=plusCourteChaine(lesActeurs,lesFilms,a1,a2);
+		else{
+			s=plusCourteChaine(lesActeurs,lesFilms,a1,a2);
+			setTrouve(true);
+		}
 		return s;
 		
 	}
@@ -148,6 +143,14 @@ public class AlgoBot {
 		s += f.getTitre()+"\navec l'acteur cible : ";
 		s += cible.getNom();
 		return s;
+	}
+	
+	public static Boolean getTrouve(){
+		return trouve;
+	}
+	
+	public static void setTrouve(Boolean trouve) {
+		AlgoBot.trouve = trouve;
 	}
 
 }

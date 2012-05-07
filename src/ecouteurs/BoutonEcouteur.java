@@ -6,9 +6,10 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import algorithme.*;
+
 import cinemaPackage.*;
 
-import algorithme.*;
 
 
 public class BoutonEcouteur implements ActionListener {
@@ -64,6 +65,7 @@ public class BoutonEcouteur implements ActionListener {
 				new BoiteDialog(f, "Veuillez remplir tous les champs !!");
 			}
 			else{
+				new Point(b);
 				String s = AlgoBot.jouer(t1.getText(), t2.getText(), lesActeurs, lesFilms);
 				b.setTexte(s);
 			}
@@ -109,34 +111,28 @@ public class BoutonEcouteur implements ActionListener {
 			}
 		
 		}
-		
-		
-		else if(bouton.equals("Recherche Liste")){
+		else if(bouton.equals("Afficher")){
 			try{
-				String s = AlgoRecherche.rechercher_liste(t1.getText(), lesActeurs, lesFilms);
+				String s = AlgoRecherche.afficher_objet(t1.getText(), lesActeurs, lesFilms);
 				r.setTexte(s);
 			}
 			catch(NullPointerException e){
 				new BoiteDialog(f , "Ce film/acteur n'existe pas");
 			}
 		}
-		
-		else if(bouton.equals("Par Prenom")){
-				String s = AlgoRecherche.recherche_prenom(t1.getText(), lesActeurs);
+		else if(bouton.equals("Rechercher un Acteur")){
+				String s = AlgoRecherche.recherche_Acteur(t1.getText(), lesActeurs, lesFilms, true);
 				r.setTexte(s);
 		}
-		else if(bouton.equals("Par Nom")){
-			String s = AlgoRecherche.recherche_nom(t1.getText(), lesActeurs);
-			r.setTexte(s);
-		}	
-		else if(bouton.equals("Rechercher")){
-			try{
-				String s = AlgoRecherche.recherche_test2(t1.getText(), lesActeurs);
+		else if(bouton.equals("Rechercher un Film")){
+
+				String s = AlgoRecherche.recherche_Acteur(t1.getText(), lesActeurs, lesFilms , false);
 				r.setTexte(s);
-			}
-			catch(NullPointerException e){
-				new BoiteDialog(f , "Ce film/acteur n'existe pas");
-			}
+
+		}
+		else if(bouton.equals("Test")){
+				String s = AlgoRecherche.recherche_test(t1.getText(), lesActeurs, lesFilms);
+				r.setTexte(s);
 		}
 	}
 }

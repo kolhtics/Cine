@@ -28,23 +28,26 @@ public class PanelRechercher extends Panel{
 	Panel panel1 = new Panel(new GridLayout(1,7));
 	Label LabelActeur1 = new Label("Acteur");
 	TextField textActeur1 = new TextField("", 20);
-	Button boutonRechercheListe = new Button ("Recherche Liste");
-	Button boutonRechercher = new Button ("Rechercher");
-	Button recherchePrenom = new Button ("Par Prenom");
-	Button rechercheNom = new Button ("Par Nom");
+	Button boutonRechercheListe = new Button ("Afficher");
+	Button boutonRechercherA = new Button ("Rechercher un Acteur");
+	Button boutonRechercherF = new Button ("Rechercher un Film");
+	Button test = new Button ("Test");
 	
 	panel1.add(LabelActeur1);
 	panel1.add(textActeur1);
 	panel1.add(boutonRechercheListe);
-	panel1.add(boutonRechercher);
-	panel1.add(recherchePrenom);
-	panel1.add(rechercheNom);
+	panel1.add(boutonRechercherA);
+	panel1.add(boutonRechercherF);
+	panel1.add(test);
 
 
 	// Creation du panel qui va contenir le resultat 
 	Panel panel4 = new Panel(new BorderLayout());
 	panel4.setBackground(Color.WHITE);
-	textRes = new TextArea();
+	textRes = new TextArea(" Notes \n\n\n Afficher : affiche un acteur ou un film donnés (recherchez d'abord le film grâce à la recherche) \n\n"+
+			               "Rechercher un Acteur : recherche un acteur dont vous connaissez une partie du nom et/ou prénom \n\n"+
+						   "Rechercher un film : recherche un film dont vous connaissez une partie du titre \n\n"+
+						   "Recherche complete : cf ci-dessus , et affiche également quelques suggestions \n");
 	textRes.setEditable(false);
 
 	
@@ -58,9 +61,9 @@ public class PanelRechercher extends Panel{
 	this.add(panel4, BorderLayout.CENTER);
 
 	boutonRechercheListe.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
-	boutonRechercher.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
-	recherchePrenom.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
-	rechercheNom.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
+	boutonRechercherA.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
+	boutonRechercherF.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
+	test.addActionListener(new BoutonEcouteur(this, textActeur1, lesActeurs, lesFilms));
 	
 	this.setVisible(true);
 
