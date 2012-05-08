@@ -2,11 +2,11 @@ package algorithme;
 
 import interfaceGraphique.PanelBot;
 
-import java.awt.Frame;
-
 public class Point extends Thread {
 	private PanelBot panelBot;
 	private Boolean b = false;
+	private String animation[] = {"recherche", "recherche.", "recherche..", "recherche..."};
+
 	
 	public Point(PanelBot panelBot){
 		this.panelBot = panelBot;
@@ -27,43 +27,17 @@ public class Point extends Thread {
 			System.out.println("============================== Debut thread =====================================");
 			isTrouve();
 			
-			String s = "recherche";
-			System.out.println(s);
-			if(isTrouve()){
-				break;
+			for(int i = 0; i<animation.length; i++){
+				
+				panelBot.setTexte(animation[i]);
+				System.out.println(animation[i]);
+				Thread.sleep(250);
+				
+				if(isTrouve()){
+					break;
+				}
 			}
-			
-			panelBot.setTexte(s);
-			s+=".";
-			System.out.println(s);
-			Thread.sleep(250);
-			if(isTrouve()){
-				break;
-			}
-			
-			panelBot.setTexte(s);
-			s+=".";
-			System.out.println(s);
-			Thread.sleep(250);
-			if(isTrouve()){
-				break;
-			}
-			
-			panelBot.setTexte(s);
-			s+=".";
-			System.out.println(s);
-			Thread.sleep(250);
-			if(isTrouve()){
-				break;
-			}
-			
-			panelBot.setTexte(s);
-			s+=".";
-			Thread.sleep(250);
-			if(isTrouve()){
-				break;
-			}
-			
+						
 			System.out.println("============================== Fin de thread =====================================");
 		}
 		

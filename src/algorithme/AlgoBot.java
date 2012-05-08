@@ -19,13 +19,16 @@ public class AlgoBot {
 		Acteur a2= lesActeurs.rechercher(act2);
 		String s="";
 		if (a1 == null && a2 == null){
+			setTrouve(true);
 			s = s+act1+" n'existe pas\n";
 			s= s+act2+" n'existe pas\n";
 		}
 		else if(a1 == null){
+			setTrouve(true);
 			s = s+act1+" n'existe pas\n";
 		}
 		else if(a2 == null){
+			setTrouve(true);
 			s= s+act2+" n'existe pas\n";
 		}
 		else{
