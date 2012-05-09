@@ -16,20 +16,16 @@ public class Point extends Thread {
 	public void run() {		
 			try{
 				methode();
-			}
-			catch(InterruptedException e){
-				System.err.println("je bug!!");
-			}
+			}catch(InterruptedException e){}
 	}
 	
 	public void methode() throws InterruptedException{
 		while(!b){
-			System.out.println("============================== Debut thread =====================================");
 			isTrouve();
 			
 			for(int i = 0; i<animation.length; i++){
 				
-				panelBot.setTexte(animation[i]);
+				panelBot.setLabelRecherche(animation[i]);
 				System.out.println(animation[i]);
 				Thread.sleep(250);
 				
@@ -37,8 +33,7 @@ public class Point extends Thread {
 					break;
 				}
 			}
-						
-			System.out.println("============================== Fin de thread =====================================");
+			panelBot.setLabelRecherche("Recherche terminée");
 		}
 		
 	}
