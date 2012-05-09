@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeSet;
 
 import cinemaPackage.*;
@@ -29,6 +30,7 @@ public class AlgoBot {
 		}
 		else if(a2 == null){
 			setTrouve(true);
+			
 			s= s+act2+" n'existe pas\n";
 		}
 		else{
@@ -110,15 +112,19 @@ public class AlgoBot {
 	}
 	
 	public static Queue<Acteur> construire_chaine(Map<Film,Film> antecedents,Film dernier){
-		Queue<Acteur> solution_inverse=new LinkedList<Acteur>();
+		Stack<Acteur> solution_inverse=new Stack<Acteur>();
+		Queue<Acteur> solution=new LinkedList<Acteur>();
 		Film f=dernier;
 		while (antecedents.containsKey(f)){
 			Film f2=antecedents.get(f);
 			Acteur a=f.acteurEnCommun(f2);
-			solution_inverse.offer(a);
+			solution_inverse.push(a);
 			f=f2;
 		}
-		return solution_inverse;
+		while (!solution_inverse.empty()){
+			solution.add(solution_inverse.pop());
+		}
+		return solution;
 	}
 
 	public static String getChaine(Acteur acteurDepart,Queue<Acteur> solution,Acteur cible){
