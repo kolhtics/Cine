@@ -10,6 +10,7 @@ import ecouteurs.*;
 public class PanelBot extends Panel{
 	private static final long serialVersionUID = 1L;
 	private TextArea textRes;
+	private Label labelRecherche;
 
 	public PanelBot(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		this.setLayout(new BorderLayout());
@@ -44,10 +45,15 @@ public class PanelBot extends Panel{
 		Panel panel0 = new Panel(new GridLayout(2,1));
 		panel0.add(panel1);
 		
+		
+		labelRecherche = new Label("");
 
 		this.add(panel0, BorderLayout.NORTH);
 		this.add(panel4, BorderLayout.CENTER);
-
+		this.add(labelRecherche, BorderLayout.SOUTH);
+		
+		textActeur1.addKeyListener(new ClavierEcouteur(textActeur1, lesActeurs, lesFilms));
+		textActeur2.addKeyListener(new ClavierEcouteur(textActeur2, lesActeurs, lesFilms));
 		
 		bouttonJouer.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
 
@@ -59,6 +65,12 @@ public class PanelBot extends Panel{
 		textRes.setText(s);
 		System.out.println(s);
 		textRes.repaint();
+	}
+	
+	public void setLabelRecherche(String s){
+		labelRecherche.setText(s);
+		System.out.println(s);
+		labelRecherche.repaint();
 	}
 
 	
