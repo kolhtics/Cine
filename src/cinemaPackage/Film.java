@@ -83,7 +83,7 @@ public class Film implements Identifiable , Comparable<Film>
 	 * Conversion en string. Est entre autre appellée lors par la fonction
 	 * 'System.out.println'
 	 */
-	public String toString()
+	public String toString_full()
 	{
 		Iterator<Acteur> i = iterator();
 		String s = getTitre();
@@ -93,6 +93,9 @@ public class Film implements Identifiable , Comparable<Film>
 			s += "\n  |--> " + A.getNom();
 		}
 		return s;
+	}
+	public String toString(){
+		return this.getId();
 	}
 	
 	@Override

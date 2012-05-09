@@ -103,7 +103,7 @@ public class Acteur implements Identifiable, Comparable<Acteur>
 	 * Conversion en string. Est entre autre appellée lors par la fonction
 	 * 'System.out.println'
 	 */
-	public String toString()
+	public String toString_full()
 	{
 		Iterator<Film> i = iterator();
 		String s = getNom();
@@ -114,7 +114,9 @@ public class Acteur implements Identifiable, Comparable<Acteur>
 		}
 		return s;
 	}
-	
+	public String toString(){
+		return this.getId();
+	}
 	@Override
 	public int compareTo(Acteur o) {
 		return nom.compareTo(o.getNom());
