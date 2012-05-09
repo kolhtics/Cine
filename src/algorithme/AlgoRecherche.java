@@ -1,9 +1,8 @@
 package algorithme;
 
 import java.util.Iterator;
-import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.TreeSet;
+import java.util.Vector;
 
 import cinemaPackage.Acteur;
 import cinemaPackage.Film;
@@ -46,136 +45,77 @@ public class AlgoRecherche {
 	public static String afficher_objet(String s, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
 		try{
 			Acteur a= lesActeurs.rechercher(s);
-			String res = a.toString();
+			String res = a.toString_full();
 			return res;
 		}catch(NullPointerException e){
 			Film f = lesFilms.rechercher(s);
-			String res = f.toString();
+			String res = f.toString_full();
 			return res;
 		}
 	}
 	
-	
-	public static String recherche_Acteur(String s,Repertoire<Acteur> lesActeurs,Repertoire<Film> lesFilms,boolean recherche_Acteur){
-		String resultats="";
+	public static String nom_compact(String s){
 		String temp=s;
 		s="";
 		StringTokenizer st=new StringTokenizer(temp,",");
 		while (st.hasMoreTokens()){
-			s+=st.nextToken();
+			s += st.nextToken();
 		}
-		System.out.println(s);
-		if(recherche_Acteur){
-			if(s.length()>2){
-				Repertoire<Acteur> filtrage = recherche_nom_Acteur(s,lesActeurs);
-				Iterator<Acteur> it = filtrage.iterator();
-				s=s.toLowerCase();
-				while (it.hasNext()){
-					Acteur acteur_courant = it.next();
-					temp=acteur_courant.getNom().toLowerCase();
-					String nom=acteur_courant.getNom().toLowerCase();
-					if(levenshtein(nom,temp) < 10 ){
-						resultats+=acteur_courant.getNom()+"\n";
-					}
-				}	
-			}	
-			else resultats="Veuillez entre au minimum 3 lettres" ;
+		temp=s;
+		s="";
+		StringTokenizer st2 = new StringTokenizer(temp," ");
+		while (st2.hasMoreTokens()){
+			s += st2.nextToken();
 		}
-		else{ 
-			
-			// On fait la même chose avec des films
-			
-			if(s.length()>2){
-				Repertoire<Film> filtrage = recherche_nom_Film(s,lesFilms);
-				Iterator<Film> it = filtrage.iterator();
-				s=s.toLowerCase();
-				while (it.hasNext()){
-					Film film_courant = it.next();
-					temp=film_courant.getId().toLowerCase();
-					String nom=film_courant.getId().toLowerCase();
-					if(levenshtein(nom,temp) < 10 ){
-						resultats+=film_courant.getId()+"\n";
-					}
-				}	
-			}	
-			else resultats="Veuillez entre au minimum 3 lettres" ;
-		}
-		return resultats;
+		temp=s;
+		s="";
+		StringTokenizer st3 = new StringTokenizer(temp,"(");
+		s=st3.nextToken();
+		return s.toLowerCase();
 	}
-
-	// Methode qui retourne une chaine constituée de tous les acteurs/films qui ont soit une distance faible, 
-	// soit qui contiennent dans leur nom la chaine passée en paramètre
-	// ---> fusion assez basique de recherche_nom et recherche_levenshtein
-	public static String recherche_test(String s, Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms) {
-		String resultats="";
-		String temp=s;
-		s="";
-		StringTokenizer st=new StringTokenizer(temp,",");
-		while (st.hasMoreTokens()){
-			s+=st.nextToken();
-		}
-		if(s.length()>2){
-			Repertoire<Acteur> filtre = recherche_nom_Acteur(s, lesActeurs);
-			Iterator<Acteur> it2 = filtre.iterator();
-			while (it2.hasNext()){
-				resultats+=it2.next().getNom()+"\n";
-			}
-			Iterator<Acteur> it = lesActeurs.iterator();
-			s=s.toLowerCase();
-			while (it.hasNext()){
-				Acteur acteur_courant = it.next();
-				temp=acteur_courant.getNom().toLowerCase();
-				if(levenshtein(s,temp) < 4  &&  temp.length() > 5){
-					resultats+=acteur_courant.getNom()+"\n";
-				}
-			}
-		}
-		else resultats="Veuillez entre au minimum 3 lettres" ;
-		return resultats;
-		}
 	
-	// Methode qui vérifie si la chaîne passée en entrée est présente dans le nom d'un des Acteurs de notre répertoire 
-	public static Repertoire<Acteur> recherche_nom_Acteur(String s,Repertoire<Acteur> lesActeurs) {
+	public static Vector<Acteur> recherche_acteur(String s,Repertoire<Acteur> lesActeurs){
+		String nom = nom_compact(s);
+		Vector<Acteur> solution = new Vector<Acteur>();
 		Iterator<Acteur> it_acteur = lesActeurs.iterator();
-		Repertoire<Acteur> res= new Repertoire<Acteur>();
+		
 		while (it_acteur.hasNext()){
-			String nom="";
-			Acteur acteurCourant = it_acteur.next();
-			StringTokenizer st=new StringTokenizer(acteurCourant.getId(),",");
-			while (st.hasMoreTokens()){
-				nom += st.nextToken();
+			Acteur acteur_courant = it_acteur.next();
+			String nom_courant = nom_compact(acteur_courant.getId());
+			int distance = levenshtein(nom_courant,nom);
+			
+			if (distance < nom_courant.length()/2.5 ){
+				solution.add(acteur_courant);
 			}
-			if (nom.toLowerCase().contains(s.toLowerCase())){
-				res.ajouter(acteurCourant);
+			else if(nom_courant.contains(nom)){
+				solution.add(acteur_courant);
 			}
 		}
-		return res;
+		return solution;
 	}
-
-	// Methode qui vérifie si la chaîne passée en entrée est présente dans le nom d'un des Films de notre répertoire 
-	public static Repertoire<Film> recherche_nom_Film(String s,Repertoire<Film> lesFilms) {
+	
+	
+	
+	public static Vector<Film> recherche_film(String s,Repertoire<Film> lesFilms){
+		String nom = nom_compact(s);
+		Vector<Film> solution = new Vector<Film>();
 		Iterator<Film> it_film = lesFilms.iterator();
-		Repertoire<Film> res= new Repertoire<Film>();
+		
 		while (it_film.hasNext()){
-			String nom="";
-			Film filmCourant = it_film.next();
-			StringTokenizer st=new StringTokenizer(filmCourant.getId(),",");
-			while (st.hasMoreTokens()){
-				nom += st.nextToken();
+			Film film_courant = it_film.next();
+			String nom_courant = nom_compact(film_courant.getId());
+			int distance = levenshtein(nom_courant,nom);
+			
+			if (distance < nom_courant.length()/2.5 ){
+				solution.add(film_courant);
 			}
-			if (nom.toLowerCase().contains(s.toLowerCase())){
-				res.ajouter(filmCourant);
+			else if(nom_courant.contains(nom)){
+				solution.add(film_courant);
 			}
 		}
-		return res;
+		return solution;
 	}
 
 }
-
-
-// TODO
-// recherche par prénom : avec endwith
-// essayer de pouvoir rechercher prenom+nom et pas forcément nom+prenom
-// clean le code
 
 
