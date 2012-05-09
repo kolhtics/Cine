@@ -13,23 +13,20 @@ public class PanelJeu extends Panel{
 	private List listElement, listReponse;
 	private Label LabelListe;
 	Label LabelCompteur;
-	private Repertoire<Acteur> lesActeurs;
-
-		public PanelJeu(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
-			this.setLayout(new FlowLayout(FlowLayout.CENTER, 300, 10));
-			//this.setLayout(new GridLayout(4,1));
+	
+	
+	public PanelJeu(Repertoire<Acteur> lesActeurs, Repertoire<Film> lesFilms){
+			//this.setLayout(new FlowLayout(FlowLayout.CENTER, 300, 10));
+			this.setLayout(new BorderLayout(10,10));
 			this.setBackground(Color.LIGHT_GRAY);
 			
-			this.lesActeurs=lesActeurs;
-			
-
-			Panel panel1 = new Panel(new GridLayout(5,1, 300, 5));
+			Panel panel1 = new Panel(new GridLayout(1,5, 10, 10)); // (5,1,300,5)
 			Label LabelActeur1 = new Label("Acteur 1");
 			TextField textActeur1 = new TextField("", 20);
 			Label LabelActeur2 = new Label("Acteur 2");
 			TextField textActeur2 = new TextField("", 20);
 			Button boutonJouer = new Button ("JOUER");
-
+			
 			panel1.add(LabelActeur1);
 			panel1.add(textActeur1);
 			panel1.add(LabelActeur2);
@@ -58,13 +55,22 @@ public class PanelJeu extends Panel{
 			panel3.add(ok);
 			panel3.add(boutonBack);
 			panel3.add(bloque);
-					
-			this.add(panel1);
-			this.add(panel2);
-			this.add(panelList);
-			this.add(panel3);
+			
+			Panel panelNord = new Panel(new GridLayout(3,1));
+			Panel panelVide = new Panel();
+			panelNord.add(panel1);
+			panelNord.add(panelVide);
+			panelNord.add(panel2);
 
+			this.add(panelNord, BorderLayout.NORTH);
+			this.add(panelList, BorderLayout.CENTER);
+			this.add(panel3, BorderLayout.SOUTH);
+			
+			
 
+			textActeur1.addKeyListener(new ClavierEcouteur(textActeur1, lesActeurs, lesFilms));
+			textActeur2.addKeyListener(new ClavierEcouteur(textActeur2, lesActeurs, lesFilms));
+			
 			listElement.addActionListener(new SourisEcouteur(this,textActeur1, textActeur2, lesActeurs, lesFilms));//permet le double clique pour selectionner un item
 			boutonJouer.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
 			bloque.addActionListener(new BoutonEcouteur(textActeur1, textActeur2, lesActeurs, lesFilms));
@@ -86,21 +92,22 @@ public class PanelJeu extends Panel{
 
 		
 		public void setListElement (Film f, String act){
-			listElement.removeAll(); // on efface tout les elements de la list pou rapartir sur de bonnes bases
+			listElement.removeAll(); // on efface tout les elements de la list pour repartir sur de bonnes bases
 			Iterator<Acteur> it=f.iterator(); // recupere les acteurs du film f
-			Acteur a= lesActeurs.rechercher(act); // a est l'acteur que l'on ne veut pas afficher dans la liste
 			while (it.hasNext()){
-				String acteurCourant = it.next().getId();
-				if(!a.getId().equals(acteurCourant)){ // si l'acteur a afficher n'est pas le meme que l'acteur sur lequel on vient de cliquer
-					listElement.add(acteurCourant); // alors on affiche cet acteur
-				}									// cela nous permet de ne pas afficher l'acteur dans la liste des acteurs de ses propres films
+				String acteurCourant = it.next().getId(); 
+				listElement.add(acteurCourant);   // alors on affiche cet acteur			                
 			}
 		}
-
+		public void setPanelInvisible(){
+			this.listElement.setVisible(false);
+		}
+		public void setPanelVisible(){
+			this.listElement.setVisible(true);
+		}
 		public void setListReponse(String s) {
 			this.listReponse.add(s);
 		}
-
 		public void setLabelListe(String s) {
 			LabelListe.setText(s);
 			LabelListe.repaint();
