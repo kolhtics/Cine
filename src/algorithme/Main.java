@@ -12,11 +12,11 @@ public class Main {
 		Repertoire<Film> lesFilms = new Repertoire<Film>();
 				
 		WindowImage windowDemarrage = new WindowImage();
-				
-		LecteurBD.lireDonnees( new String("data/bidon.short"), lesActeurs, lesFilms );
-		//LecteurBD.lireDonnees( new String("data/actresses.short"), lesActeurs, lesFilms );
+		
+		LecteurBD.lireDonnees( new String("data/actresses.short"), lesActeurs, lesFilms );
 		LecteurBD.lireDonnees( new String("data/actors.short"), lesActeurs, lesFilms );
 		
+		System.out.println(lesActeurs.taille());
 		windowDemarrage.dispose();
 
 		new CineFrame(lesActeurs, lesFilms);
