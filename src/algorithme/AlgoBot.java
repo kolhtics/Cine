@@ -138,18 +138,18 @@ public class AlgoBot {
 		Acteur dernierAct=a2;
 		while (a2!= null ){
 			Film f=a1.filmEnCommun(a2);
-			try{
-				s += f.getTitre()+"\navec : ";  
-			}catch (NullPointerException e){
-				return "Une erreur est survenue lors de la recherche : Pas de films en communs";
-			}
+			s += f.getTitre()+"\navec : ";  
 			s += a2.getNom()+"\nqui a  joue dans : ";
 			a1=a2;
 			a2=solution.poll();
 			if (a2!=null){dernierAct = a2; }
 		}
 		Film f=dernierAct.filmEnCommun(cible);
-		s += f.getTitre()+"\navec l'acteur cible : ";
+		try {
+			s += f.getTitre()+"\navec l'acteur cible : ";
+		}catch (NullPointerException e){
+			s+= "Film inconnu"+"\navec l'acteur cible : ";
+		}
 		s += cible.getNom();
 		return s;
 	}

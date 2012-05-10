@@ -68,8 +68,8 @@ public class PanelJeu extends Panel{
 			
 			
 
-			textActeur1.addKeyListener(new ClavierEcouteur(textActeur1, lesActeurs, lesFilms));
-			textActeur2.addKeyListener(new ClavierEcouteur(textActeur2, lesActeurs, lesFilms));
+			textActeur1.addKeyListener(new ClavierEcouteur(textActeur1, lesActeurs));
+			textActeur2.addKeyListener(new ClavierEcouteur(textActeur2, lesActeurs));
 			
 			listElement.addActionListener(new SourisEcouteur(this,textActeur1, textActeur2, lesActeurs, lesFilms));//permet le double clique pour selectionner un item
 			boutonJouer.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));

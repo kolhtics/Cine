@@ -52,8 +52,8 @@ public class PanelBot extends Panel{
 		this.add(panel4, BorderLayout.CENTER);
 		this.add(labelRecherche, BorderLayout.SOUTH);
 		
-		textActeur1.addKeyListener(new ClavierEcouteur(textActeur1, lesActeurs, lesFilms));
-		textActeur2.addKeyListener(new ClavierEcouteur(textActeur2, lesActeurs, lesFilms));
+		textActeur1.addKeyListener(new ClavierEcouteur(textActeur1, lesActeurs));
+		textActeur2.addKeyListener(new ClavierEcouteur(textActeur2, lesActeurs));
 		
 		bouttonJouer.addActionListener(new BoutonEcouteur(this, textActeur1, textActeur2, lesActeurs, lesFilms));
 
